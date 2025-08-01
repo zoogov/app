@@ -3,7 +3,7 @@ import { Box, Show } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Hex } from 'viem';
+import { Address, Hex } from 'viem';
 import PencilWithLineIcon from '../../../assets/theme/custom/icons/PencilWithLineIcon';
 import { RoleCard } from '../../../components/Roles/RoleCard';
 import { RoleCardLoading } from '../../../components/Roles/RolePageCard';
@@ -82,7 +82,7 @@ export function SafeRolesPage() {
         <>
           <Show above="md">
             <RolesTable
-              handleRoleClick={handleNavigateToRole}
+              handleRoleClick={handleNavigateToRole as (hatId: Address) => void}
               hatsTree={hatsTree}
             />
           </Show>

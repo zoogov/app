@@ -139,7 +139,7 @@ export const useSafeTransactions = () => {
           const isMultisigRejectionTx: boolean | undefined = isMultisigRejectionProposal(
             transaction.safe,
             transaction.nonce,
-            transaction,
+            transaction as any,
           );
 
           const confirmations = transaction.confirmations ?? [];
@@ -178,6 +178,7 @@ export const useSafeTransactions = () => {
             transaction: {
               ...transaction,
               dataDecoded: decodedData ? JSON.stringify(decodedData) : undefined,
+              proposer: transaction.proposer || '',
             },
             eventDate,
             confirmations,
@@ -186,7 +187,7 @@ export const useSafeTransactions = () => {
             proposalId: eventSafeTxHash,
             targets,
             // @dev proposer can be null when its the first transaction
-            proposer: isAddress(transaction.proposer)
+            proposer: transaction.proposer && isAddress(transaction.proposer)
               ? getAddress(transaction.proposer)
               : transaction.nonce === 0 && transaction.executor && isAddress(transaction.executor)
                 ? getAddress(transaction.executor)

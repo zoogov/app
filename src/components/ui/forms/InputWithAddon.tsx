@@ -53,7 +53,7 @@ export function NumberInputWithAddon({ addonContent, ...props }: NumberInputWith
       >
         <NumberInputField
           pr="6.5rem"
-          placeholder={props.placeholder}
+          placeholder={props.placeholder as string | undefined}
         />
       </NumberInput>
       <InputRightElement

@@ -58,14 +58,14 @@ export function useTreasuryFetcher() {
         assetDisplay:
           transfer.type === TransferType.ERC721_TRANSFER
             ? `${transfer.tokenInfo.name} #${transfer.tokenId}`
-            : formatCoin(transfer.value, true, decimals, symbol),
+            : formatCoin(transfer.value || '0', true, decimals, symbol),
         fullCoinTotal:
           transfer.type === TransferType.ERC721_TRANSFER
             ? undefined
-            : formatCoin(transfer.value, false, decimals, symbol),
+            : formatCoin(transfer.value || '0', false, decimals, symbol),
         transferAddress: safeAddress === transfer.from ? transfer.to : transfer.from,
         transactionHash: transfer.transactionHash,
-        tokenId: transfer.tokenId,
+        tokenId: transfer.tokenId || '',
         tokenInfo: transfer.tokenInfo,
         isLast,
       };
@@ -186,11 +186,13 @@ export function useTreasuryFetcher() {
         .forEach(async (transfer, index, _transfers) => {
           // @note assume native token if no token address
           let tokenInfo: TokenInfoResponse = {
+            type: 'NATIVE_TOKEN',
             address: '',
             name: chain.nativeCurrency.name,
             symbol: chain.nativeCurrency.symbol,
             decimals: chain.nativeCurrency.decimals,
             logoUri: nativeTokenIcon,
+            trusted: true,
           };
           const transferTokenAddress = transfer.tokenAddress;
           if (transferTokenAddress) {
@@ -203,7 +205,7 @@ export function useTreasuryFetcher() {
           }
 
           const formattedTransfer: TransferDisplayData = formatTransfer({
-            transfer: { ...transfer, tokenInfo },
+            transfer: { ...transfer, tokenInfo, transferId: `${transfer.transactionHash}-${index}` } as TransferWithTokenInfo,
             isLast: _transfers.length - 1 === index,
             safeAddress,
           });

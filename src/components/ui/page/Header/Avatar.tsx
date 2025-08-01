@@ -21,7 +21,7 @@ function BlockieAvatar({ address, size }: { size: AvatarSize; address: Address }
     >
       <Image
         borderRadius="full"
-        src={blo(address)}
+        src={blo(address as string)}
         alt={address}
       />
     </Box>

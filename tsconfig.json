@@ -17,7 +17,8 @@
     "jsx": "react-jsx",
     "incremental": true,
     "allowImportingTsExtensions": true,
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
+    "types": ["vitest/globals", "node"]
   },
   "include": ["src", "tests", "test", "app", "functions", "vite.config.mts"]
 }

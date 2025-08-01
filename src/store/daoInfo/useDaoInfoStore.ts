@@ -29,7 +29,7 @@ export const useDaoInfoStore = create<DaoInfoStore>()(set => ({
         address: getAddress(address),
         nextNonce,
         threshold,
-        nonce,
+        nonce: Number(nonce),
       },
     });
   },

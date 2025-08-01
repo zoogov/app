@@ -230,7 +230,7 @@ export const createGovernancesSlice: StateCreator<
           state.governances[daoKey].loadingProposals = false;
         }
         const existingProposalIndex = state.governances[daoKey].proposals.findIndex(
-          p => p.proposalId === proposal.proposalId,
+          (p: any) => p.proposalId === proposal.proposalId,
         );
         if (existingProposalIndex !== -1) {
           state.governances[daoKey].proposals[existingProposalIndex] = proposal;
@@ -250,7 +250,7 @@ export const createGovernancesSlice: StateCreator<
     set(
       state => {
         const proposal = state.governances[daoKey].proposals?.find(
-          p => p.proposalId === proposalId,
+          (p: any) => p.proposalId === proposalId,
         );
         if (!proposal) {
           return;
@@ -265,7 +265,7 @@ export const createGovernancesSlice: StateCreator<
     set(
       state => {
         const proposal = state.governances[daoKey].proposals?.find(
-          p => p.proposalId === proposalId,
+          (p: any) => p.proposalId === proposalId,
         );
         if (!proposal) {
           return;
@@ -285,7 +285,7 @@ export const createGovernancesSlice: StateCreator<
     set(
       state => {
         const azoriusProposal = state.governances[daoKey].proposals?.find(
-          p => p.proposalId === proposalId,
+          (p: any) => p.proposalId === proposalId,
         ) as AzoriusProposal;
         if (!azoriusProposal) {
           return;

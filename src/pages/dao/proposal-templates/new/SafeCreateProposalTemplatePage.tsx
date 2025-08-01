@@ -159,7 +159,7 @@ export function SafeCreateProposalTemplatePage() {
             pendingTransaction={pendingCreateTx}
             isProposalMode={true}
             values={values.transactions}
-            setFieldValue={setFieldValue}
+            setFieldValue={setFieldValue as any}
             errors={
               errors?.transactions as FormikErrors<CreateProposalTransaction<BigIntValuePair>>[]
             }

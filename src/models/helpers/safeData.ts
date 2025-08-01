@@ -61,7 +61,7 @@ export const safeData = async (
     bytecodeHash: keccak256(
       encodePacked(
         ['bytes', 'uint256'],
-        [safeFactoryContractProxyCreationCode, hexToBigInt(safeSingletonContract.address)],
+        [safeFactoryContractProxyCreationCode, hexToBigInt(safeSingletonContract.address as `0x${string}`)],
       ),
     ),
   });

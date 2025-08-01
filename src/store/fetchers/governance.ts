@@ -8,6 +8,7 @@ import {
   getAddress,
   getContract,
   GetContractEventsReturnType,
+  Hex,
   zeroAddress,
 } from 'viem';
 import { useAccount } from 'wagmi';
@@ -506,7 +507,7 @@ export function useGovernanceFetcher() {
                     proposalCreatedEvent.args.transactions.map(tx => ({
                       ...tx,
                       to: tx.to,
-                      data: tx.data,
+                      data: tx.data as Hex,
                       value: tx.value,
                     })),
                   );
@@ -521,7 +522,7 @@ export function useGovernanceFetcher() {
                       ...tx,
                       to: tx.to,
                       value: tx.value,
-                      data: tx.data,
+                      data: tx.data as Hex,
                     })),
                     decodedTransactions,
                   };
@@ -693,7 +694,7 @@ export function useGovernanceFetcher() {
                     proposalCreatedEvent.args.transactions.map(tx => ({
                       ...tx,
                       to: tx.to,
-                      data: tx.data,
+                      data: tx.data as Hex,
                       value: tx.value,
                     })),
                   );
@@ -708,7 +709,7 @@ export function useGovernanceFetcher() {
                       ...tx,
                       to: tx.to,
                       value: tx.value,
-                      data: tx.data,
+                      data: tx.data as Hex,
                     })),
                     decodedTransactions,
                   };

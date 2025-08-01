@@ -1,6 +1,6 @@
 import { legacy } from '@decentdao/decent-contracts';
 import { useCallback, useEffect } from 'react';
-import { Address, getContract } from 'viem';
+import { Address, getContract, Hex } from 'viem';
 import { useAccount } from 'wagmi';
 import LockReleaseAbi from '../../assets/abi/LockRelease';
 import { logError } from '../../helpers/errorLogging';
@@ -195,7 +195,7 @@ export function useGovernanceListeners({
           const typedTransactions = log.args.transactions.map(t => ({
             ...t,
             to: t.to,
-            data: t.data,
+            data: t.data as Hex,
             value: t.value,
           }));
 

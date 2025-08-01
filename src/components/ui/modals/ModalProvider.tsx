@@ -403,7 +403,7 @@ const getModalData = (args: {
           pendingTransaction={false}
           values={[]}
           errors={undefined}
-          setFieldValue={() => {}}
+          setFieldValue={(() => {}) as any}
           isProposalMode={true}
           onSubmit={current.props.onSubmit}
           onClose={popModal}

@@ -4,9 +4,21 @@ import SafeApiKit, {
   SafeMultisigTransactionListResponse,
   SignatureResponse,
   TokenInfoResponse,
-  TransferWithTokenInfoResponse,
 } from '@safe-global/api-kit';
 import { ListResponse } from '@safe-global/safe-core-sdk-types';
+
+type TransferWithTokenInfoResponse = {
+  type: string;
+  executionDate: string;
+  blockNumber: number;
+  transactionHash: string;
+  to: string;
+  value: string | null;
+  tokenId: string | null;
+  tokenAddress: string | null;
+  tokenInfo: TokenInfoResponse | null;
+  from: string;
+};
 import axios from 'axios';
 import { useMemo } from 'react';
 import {
@@ -142,11 +154,13 @@ class EnhancedSafeApiKit {
           tokenAddress: transfer.tokenAddress,
           from: transaction.transaction?.txInfo?.sender?.value ?? '',
           tokenInfo: {
+            type: 'ERC20',
             address: transfer.tokenAddress,
             name: transfer.tokenName,
             symbol: transfer.tokenSymbol,
             decimals: transfer.decimals,
             logoUri: transfer.logoUri,
+            trusted: false,
           },
         };
       }
@@ -220,7 +234,7 @@ class EnhancedSafeApiKit {
 
       return {
         address: checksummedSafeAddress,
-        nonce: Number(nonce ? nonce : 0),
+        nonce: (nonce || 0).toString(),
         threshold: Number(threshold ? threshold : 0),
         owners: owners as string[],
         modules: allModules,
@@ -300,10 +314,12 @@ class EnhancedSafeApiKit {
       const resolvedSymbol = symbol.result ?? 'Unknown Token';
       const resolvedDecimals = decimals.result;
       return {
+        type: 'ERC20',
         address: tokenAddress,
         name: resolvedName,
         symbol: resolvedSymbol,
         decimals: Number(resolvedDecimals),
+        trusted: false,
       };
     } catch (error) {
       console.error('Error fetching getToken from contract:', error);

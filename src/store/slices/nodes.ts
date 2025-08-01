@@ -44,7 +44,7 @@ export const createNodesSlice: StateCreator<GlobalStore, StoreMiddleware, [], No
           address: getAddress(address),
           nextNonce,
           threshold,
-          nonce,
+          nonce: Number(nonce),
         };
 
         if (!state.nodes[daoKey]) {

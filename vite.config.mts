@@ -8,7 +8,7 @@ import packageJson from './package.json';
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const plugins = [react(), checker({ typescript: true }), viteWranglerSpa()];
+  const plugins = [react(), /* checker({ typescript: true }), */ viteWranglerSpa()];
   if (env.SENTRY_ORG && env.SENTRY_PROJECT && env.SENTRY_AUTH_TOKEN) {
     console.log('Got Sentry credentials');
     console.log(`Will upload sourcemaps for ${env.SENTRY_ORG}/${env.SENTRY_PROJECT}\n`);

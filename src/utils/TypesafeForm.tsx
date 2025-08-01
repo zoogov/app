@@ -249,7 +249,6 @@ function useTypesafeFormikContext<
     throw new Error('useTypesafeFormikContext must be used within a TypesafeFormikProvider');
   }
 
-  // @ts-expect-error
   return context as TypesafeFormikContextReturnType<T>;
 }
 

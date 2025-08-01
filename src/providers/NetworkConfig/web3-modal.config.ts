@@ -30,11 +30,14 @@ export const transportsReducer = (
 
 export const wagmiConfig = defaultWagmiConfig({
   chains: supportedWagmiChains as [Chain, ...Chain[]],
-  projectId: walletConnectProjectId,
+  projectId: walletConnectProjectId || 'dummy-project-id',
   metadata,
   transports: supportedNetworks.reduce(transportsReducer, {}),
 });
 
-if (walletConnectProjectId) {
-  createWeb3Modal({ wagmiConfig, projectId: walletConnectProjectId, metadata: metadata });
-}
+// Always create Web3Modal, even without a real project ID
+createWeb3Modal({ 
+  wagmiConfig, 
+  projectId: walletConnectProjectId || 'dummy-project-id', 
+  metadata: metadata 
+});

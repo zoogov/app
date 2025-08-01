@@ -123,7 +123,7 @@ export default function useClawBack({ childSafeInfo, parentAddress }: IUseClawBa
                 values: transactions.map(tx => tx.value),
                 calldatas: transactions.map(tx => tx.calldata),
               },
-              nonce: parentSafeInfo.nonce,
+              nonce: Number(parentSafeInfo.nonce),
               pendingToastMessage: t('clawBackPendingToastMessage'),
               failedToastMessage: t('clawBackFailedToastMessage'),
               successToastMessage: t('clawBackSuccessToastMessage'),
