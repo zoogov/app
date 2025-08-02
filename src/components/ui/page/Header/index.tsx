@@ -14,8 +14,7 @@ import { List } from '@phosphor-icons/react';
 import { RefObject, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { DecentLogo } from '../../../../assets/theme/custom/icons/DecentLogo';
-import { DecentSignature } from '../../../../assets/theme/custom/icons/DecentSignature';
+import { LuxTriangle } from '../../../../assets/theme/custom/icons/LuxTriangle';
 import {
   MOBILE_DRAWER_OVERLAY,
   NEUTRAL_2_82_TRANSPARENT,
@@ -80,11 +79,7 @@ function HeaderLogo() {
                   aria-label={t('ariaLabelFractalBrand')}
                   onClick={onClose}
                 >
-                  <DecentLogo
-                    aria-hidden
-                    h="1.8rem"
-                    w="1.5rem"
-                  />
+                  <LuxTriangle boxSize="1.5rem" color="white" />
                 </Link>
               </Flex>
               <Flex
@@ -107,12 +102,7 @@ function HeaderLogo() {
           to={BASE_ROUTES.landing}
           aria-label={t('ariaLabelFractalBrand')}
         >
-          <DecentSignature
-            aria-hidden
-            height="1.5rem"
-            width="auto"
-            mr="1.75rem"
-          />
+          <LuxTriangle boxSize="1.5rem" color="white" mr="1.75rem" />
         </Link>
       </Show>
     </Flex>

@@ -48,27 +48,32 @@ export function Footer() {
   return (
     <Flex
       w="100%"
-      flexWrap="wrap"
-      justifyContent={{ base: 'flex-start', md: 'center' }}
+      flexDirection="column"
       alignItems="center"
-      gap={4}
+      gap={2}
+      fontSize="0.75rem"
+      color="color-charcoal-400"
+      py={4}
     >
-      <Flex>
-        <ExternalLink href="/docs/fractal_audit.pdf">{t('audit', { ns: 'home' })}</ExternalLink>
+      <Flex alignItems="center" gap={2}>
+        <ExternalLink href="/docs/fractal_audit.pdf" fontSize="0.75rem">{t('audit', { ns: 'home' })}</ExternalLink>
+        <Box>·</Box>
         <ExternalLink
           href={`https://github.com/decentdao/decent-interface/releases/tag/v${import.meta.env.PACKAGE_VERSION}`}
+          fontSize="0.75rem"
         >
           v{import.meta.env.PACKAGE_VERSION}
         </ExternalLink>
+        <Box>·</Box>
+        <ExternalLink
+          href={URL_DECENT}
+          styleVariant="grey"
+          fontSize="0.75rem"
+        >
+          {t('madeWithLove', { ns: 'home' })}
+        </ExternalLink>
+        <DemoModeButton />
       </Flex>
-
-      <ExternalLink
-        href={URL_DECENT}
-        styleVariant="grey"
-        fontSize="1.2rem"
-      >
-        {t('madeWithLove', { ns: 'home' })}
-      </ExternalLink>
 
       <Flex
         gap={4}
@@ -95,7 +100,6 @@ export function Footer() {
           DisplayIcon={DiscordLogo}
         />
       </Flex>
-      <DemoModeButton />
     </Flex>
   );
 }

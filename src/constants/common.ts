@@ -25,11 +25,11 @@ export const useContentHeight = () => {
 };
 
 // TODO get these into the theme
-export const DISABLED_INPUT = '#16121929';
-export const MOBILE_DRAWER_OVERLAY = '#161219D6';
-export const BACKGROUND_SEMI_TRANSPARENT = '#16121980';
-export const NEUTRAL_2_82_TRANSPARENT = '#221D25D6';
-export const NEUTRAL_2_50_TRANSPARENT = '#221D2580';
+export const DISABLED_INPUT = '#00000029';
+export const MOBILE_DRAWER_OVERLAY = '#000000D6';
+export const BACKGROUND_SEMI_TRANSPARENT = '#00000080';
+export const NEUTRAL_2_82_TRANSPARENT = '#000000D6';
+export const NEUTRAL_2_50_TRANSPARENT = '#00000080';
 export const COLOR_TEXT_SUCCESS = '#59CA9C';
 export const COLOR_CHARCOAL_300 = '#ACA1B2';
 export const COLOR_YELLOW_1 = '#F5E18D';

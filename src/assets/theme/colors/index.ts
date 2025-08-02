@@ -4,8 +4,8 @@ export default {
   'white-alpha-08': '#ffffff14',
 
   // Solid colors
-  'color-white': '#f8f4fc',
-  'color-black': '#151217',
+  'color-white': '#ffffff',
+  'color-black': '#000000',
 
   // Green shades
   'color-green-50': '#c1f1d2',
@@ -20,18 +20,18 @@ export default {
   'color-green-900': '#16422a',
   'color-green-950': '#0c2517',
 
-  // Charcoal shades
-  'color-charcoal-50': '#e1dde3',
-  'color-charcoal-100': '#cec8d2',
-  'color-charcoal-200': '#bcb3c1',
-  'color-charcoal-300': '#a99eb0',
-  'color-charcoal-400': '#96889f',
-  'color-charcoal-500': '#83738e',
-  'color-charcoal-600': '#6f617a',
-  'color-charcoal-700': '#5b5065',
-  'color-charcoal-800': '#483f4f',
-  'color-charcoal-900': '#342e3a',
-  'color-charcoal-950': '#221d25',
+  // Charcoal shades - true grays for monochromatic theme
+  'color-charcoal-50': '#f5f5f5',
+  'color-charcoal-100': '#e0e0e0',
+  'color-charcoal-200': '#cccccc',
+  'color-charcoal-300': '#b3b3b3',
+  'color-charcoal-400': '#999999',
+  'color-charcoal-500': '#808080',
+  'color-charcoal-600': '#666666',
+  'color-charcoal-700': '#4d4d4d',
+  'color-charcoal-800': '#333333',
+  'color-charcoal-900': '#1a1a1a',
+  'color-charcoal-950': '#0d0d0d',
 
   // Lilac shades
   'color-lilac-50': '#ecddf8',
@@ -112,18 +112,18 @@ export default {
 } as const;
 
 export const semanticColors = {
-  // Primary colors
-  'color-primary-50': 'color-lilac-50',
-  'color-primary-100': 'color-lilac-100',
-  'color-primary-200': 'color-lilac-200',
-  'color-primary-300': 'color-lilac-300',
-  'color-primary-400': 'color-lilac-400',
-  'color-primary-500': 'color-lilac-500',
-  'color-primary-600': 'color-lilac-600',
-  'color-primary-700': 'color-lilac-700',
-  'color-primary-800': 'color-lilac-800',
-  'color-primary-900': 'color-lilac-900',
-  'color-primary-950': 'color-lilac-950',
+  // Primary colors - using neutral grays for monochromatic theme
+  'color-primary-50': 'color-charcoal-50',
+  'color-primary-100': 'color-charcoal-100',
+  'color-primary-200': 'color-charcoal-200',
+  'color-primary-300': 'color-charcoal-300',
+  'color-primary-400': 'color-charcoal-400',
+  'color-primary-500': 'color-charcoal-500',
+  'color-primary-600': 'color-charcoal-600',
+  'color-primary-700': 'color-charcoal-700',
+  'color-primary-800': 'color-charcoal-800',
+  'color-primary-900': 'color-charcoal-900',
+  'color-primary-950': 'color-charcoal-950',
 
   // Neutral colors
   'color-neutral-50': 'color-charcoal-50',

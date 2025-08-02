@@ -3,10 +3,13 @@ import scrollStyles from './scroll';
 
 export default {
   global: () => ({
+    '*': {
+      fontFamily: 'Inter, sans-serif !important',
+    },
     body: {
       background: 'color-black',
       backgroundRepeat: 'no-repeat',
-      fontFamily: 'DM Sans',
+      fontFamily: 'Inter, sans-serif',
       textStyle: 'text-base-regular',
       color: 'color-white',
       height: '100%',

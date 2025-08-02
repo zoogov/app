@@ -5,10 +5,10 @@ const primaryDisabled = {
 };
 
 const primary = defineStyle({
-  bg: 'color-lilac-100',
-  color: 'color-lilac-700',
+  bg: 'color-white',
+  color: 'color-black',
   _hover: {
-    bg: 'color-lilac-200',
+    bg: 'color-charcoal-50',
     _disabled: {
       ...primaryDisabled,
     },
@@ -17,7 +17,7 @@ const primary = defineStyle({
     ...primaryDisabled,
   },
   _active: {
-    bg: 'color-lilac-300',
+    bg: 'color-charcoal-100',
   },
 });
 
@@ -27,11 +27,12 @@ const secondaryDisabled = {
 };
 const secondary = defineStyle({
   border: '1px solid',
-  borderColor: 'color-lilac-100',
-  color: 'color-lilac-100',
+  borderColor: 'color-white',
+  color: 'color-white',
+  bg: 'transparent',
   _hover: {
-    borderColor: 'color-lilac-200',
-    color: 'color-lilac-200',
+    bg: 'color-white',
+    color: 'color-black',
     _disabled: {
       ...secondaryDisabled,
     },
@@ -40,8 +41,9 @@ const secondary = defineStyle({
     ...secondaryDisabled,
   },
   _active: {
-    borderColor: 'color-lilac-300',
-    color: 'color-lilac-300',
+    bg: 'color-charcoal-100',
+    borderColor: 'color-charcoal-100',
+    color: 'color-black',
   },
 });
 
@@ -54,10 +56,10 @@ const tertiaryLoading = {
 };
 const tertiary = defineStyle({
   bg: 'transparent',
-  color: 'color-lilac-100',
+  color: 'color-white',
   _hover: {
     bg: 'white-alpha-04',
-    color: 'color-lilac-200',
+    color: 'color-charcoal-100',
     _disabled: {
       ...tertiaryDisabled,
       _loading: tertiaryLoading,
@@ -69,7 +71,7 @@ const tertiary = defineStyle({
   },
   _active: {
     bg: 'white-alpha-08',
-    color: 'color-lilac-300',
+    color: 'color-charcoal-50',
   },
   _focus: {},
 });
@@ -100,10 +102,10 @@ const stepper = defineStyle({
   border: '1px solid',
   borderColor: 'color-neutral-900',
   bg: 'color-black',
-  color: 'color-lilac-100',
+  color: 'color-white',
   _active: {
     borderColor: 'color-neutral-800',
-    boxShadow: '0px 0px 0px 3px #534D58',
+    boxShadow: '0px 0px 0px 3px #333333',
   },
   _hover: {
     borderColor: 'color-neutral-800',
@@ -111,7 +113,7 @@ const stepper = defineStyle({
   _focus: {
     outline: 'none',
     borderColor: 'color-neutral-800',
-    boxShadow: '0px 0px 0px 3px #534D58',
+    boxShadow: '0px 0px 0px 3px #333333',
   },
 });
 const secondaryV1Disabled = {
