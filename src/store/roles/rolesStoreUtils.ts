@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { HatsModulesClient } from '@hatsprotocol/modules-sdk';
 import { Hat, Tree } from '@hatsprotocol/sdk-v1-subgraph';
 import { Client } from 'urql';
@@ -12,22 +12,22 @@ import { convertStreamIdToBigInt } from '../../hooks/streams/useCreateSablierStr
 import { CacheKeys } from '../../hooks/utils/cache/cacheDefaults';
 import { getValue } from '../../hooks/utils/cache/useLocalStorage';
 import {
-  DecentAdminHat,
-  DecentRoleHat,
-  DecentRoleHatTerms,
-  DecentTopHat,
-  DecentTree,
+  DAOAdminHat,
+  DAORoleHat,
+  DAORoleHatTerms,
+  DAOTopHat,
+  DAOTree,
   RolesStoreData,
   SablierPayment,
 } from '../../types/roles';
 
-export class DecentHatsError extends Error {
+export class DAOHatsError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = 'DecentHatsError';
+    this.name = 'DAOHatsError';
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, DecentHatsError);
+      Error.captureStackTrace(this, DAOHatsError);
     }
   }
 }
@@ -55,11 +55,11 @@ const getRawTopHat = (hats: Hat[]) => {
   const potentialRawTopHats = hats.filter(h => appearsExactlyNumberOfTimes(h.prettyId, '.', 0));
 
   if (potentialRawTopHats.length === 0) {
-    throw new DecentHatsError('Top Hat is missing');
+    throw new DAOHatsError('Top Hat is missing');
   }
 
   if (potentialRawTopHats.length > 1) {
-    throw new DecentHatsError('Too many Top Hats');
+    throw new DAOHatsError('Too many Top Hats');
   }
 
   return potentialRawTopHats[0];
@@ -69,11 +69,11 @@ const getRawAdminHat = (hats: Hat[]) => {
   const potentialRawAdminHats = hats.filter(h => appearsExactlyNumberOfTimes(h.prettyId, '.', 1));
 
   if (potentialRawAdminHats.length === 0) {
-    throw new DecentHatsError('Admin Hat is missing');
+    throw new DAOHatsError('Admin Hat is missing');
   }
 
   if (potentialRawAdminHats.length > 1) {
-    throw new DecentHatsError('Too many Admin Hats');
+    throw new DAOHatsError('Too many Admin Hats');
   }
 
   return potentialRawAdminHats[0];
@@ -198,7 +198,7 @@ const getRoleHatTerms = async (
   hatsElectionsImplementation: Address,
   publicClient: PublicClient,
 ): Promise<{
-  roleTerms: DecentRoleHatTerms;
+  roleTerms: DAORoleHatTerms;
   isTermed: boolean;
 }> => {
   if (
@@ -372,13 +372,13 @@ export const sanitize = async (
   publicClient: PublicClient,
   sablierSubgraphClient: Client,
   whitelistingVotingStrategy?: Address,
-): Promise<undefined | null | DecentTree> => {
+): Promise<undefined | null | DAOTree> => {
   if (hatsTree === undefined || hatsTree === null) {
     return hatsTree;
   }
 
   if (hatsTree.hats === undefined || hatsTree.hats.length === 0) {
-    throw new DecentHatsError("Hats Tree doesn't have any Hats");
+    throw new DAOHatsError("Hats Tree doesn't have any Hats");
   }
 
   const rawTopHat = getRawTopHat(hatsTree.hats);
@@ -394,7 +394,7 @@ export const sanitize = async (
   });
 
   if (!topHatSmartAddress) {
-    throw new DecentHatsError('Top Hat smart address is not valid');
+    throw new DAOHatsError('Top Hat smart address is not valid');
   }
 
   const whitelistingVotingContract = whitelistingVotingStrategy
@@ -409,7 +409,7 @@ export const sanitize = async (
     whitelistedHatsIds = [...(await whitelistingVotingContract.read.getWhitelistedHatIds())];
   }
 
-  const topHat: DecentTopHat = {
+  const topHat: DAOTopHat = {
     id: rawTopHat.id,
     prettyId: rawTopHat.prettyId ?? '',
     name: topHatMetadata.name,
@@ -429,10 +429,10 @@ export const sanitize = async (
     publicClient,
   });
   if (!adminHatSmartAddress) {
-    throw new DecentHatsError('Admin Hat smart address is not valid');
+    throw new DAOHatsError('Admin Hat smart address is not valid');
   }
 
-  const adminHat: DecentAdminHat = {
+  const adminHat: DAOAdminHat = {
     id: rawAdminHat.id,
     prettyId: rawAdminHat.prettyId ?? '',
     name: adminHatMetadata.name,
@@ -441,7 +441,7 @@ export const sanitize = async (
     wearer: rawAdminHat.wearers?.length ? rawAdminHat.wearers[0].id : undefined,
   };
 
-  let roleHats: DecentRoleHat[] = [];
+  let roleHats: DAORoleHat[] = [];
 
   for (const rawHat of hatsTree.hats) {
     if (
@@ -504,7 +504,7 @@ export const sanitize = async (
     roleHats.push({
       id: rawHat.id,
       prettyId: rawHat.prettyId ?? '',
-      // UI fix for a spelling error on a Decent DAO role
+      // UI fix for a spelling error on a DAO DAO role
       name: hatMetadata.name.replace('Tokenomisc', 'Tokenomics'),
       description: hatMetadata.description,
       wearerAddress: getAddress(rawHat.wearers[0].id),
@@ -517,13 +517,13 @@ export const sanitize = async (
     });
   }
 
-  const decentTree: DecentTree = {
+  const daoTree: DAOTree = {
     topHat,
     adminHat,
     roleHats,
   };
 
-  return decentTree;
+  return daoTree;
 };
 
 export const paymentSorterByActiveStatus = (

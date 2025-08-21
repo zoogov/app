@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -13,14 +13,14 @@ import {
 import { logError } from '../../helpers/errorLogging';
 import useBalancesAPI from '../../providers/App/hooks/useBalancesAPI';
 import { useSafeAPI } from '../../providers/App/hooks/useSafeAPI';
-import { FractalModuleType, DecentModule } from '../../types';
+import { FractalModuleType, DAOModule } from '../../types';
 import { useCanUserCreateProposal } from '../utils/useCanUserSubmitProposal';
 import useSubmitProposal from './proposal/useSubmitProposal';
 
 interface IUseClawBack {
   childSafeInfo: {
     daoAddress?: Address;
-    modules: DecentModule[] | null;
+    modules: DAOModule[] | null;
   };
   parentAddress: Address | null;
 }

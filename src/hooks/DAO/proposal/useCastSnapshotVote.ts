@@ -68,7 +68,7 @@ const useCastSnapshotVote = (extendedSnapshotProposal: ExtendedSnapshotProposal 
               type: extendedSnapshotProposal.type,
               privacy: extendedSnapshotProposal.privacy,
               choice: encryptedChoice!,
-              app: 'decent',
+              app: 'dao',
             });
           } else {
             await submitSnapshotVote(walletClient, {
@@ -76,7 +76,7 @@ const useCastSnapshotVote = (extendedSnapshotProposal: ExtendedSnapshotProposal 
               proposal: extendedSnapshotProposal.proposalId,
               type: extendedSnapshotProposal.type,
               choice,
-              app: 'decent',
+              app: 'dao',
             });
           }
           toast.success(`${t('successCastVote')}. ${t('snapshotRecastVoteHelper')}`, {

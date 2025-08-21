@@ -55,7 +55,7 @@ jobs:
       - name: Checkout UI automation repository
         uses: actions/checkout@v4
         with:
-          repository: decentdao/decent-ui-automation
+          repository: luxdao/ui-automation
           path: ui-automation
           fetch-depth: 0
           clean: true

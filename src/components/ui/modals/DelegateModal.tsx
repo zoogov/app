@@ -1,5 +1,5 @@
 import { Box, Button, Flex, SimpleGrid, Spacer, Text } from '@chakra-ui/react';
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { Field, FieldAttributes, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { getAddress, getContract, zeroAddress } from 'viem';
@@ -14,7 +14,7 @@ import { useNetworkWalletClient } from '../../../hooks/useNetworkWalletClient';
 import { useGetAccountName } from '../../../hooks/utils/useGetAccountName';
 import { useTransaction } from '../../../hooks/utils/useTransaction';
 import { useDAOStore } from '../../../providers/App/AppProvider';
-import { AzoriusGovernance, DecentGovernance } from '../../../types';
+import { AzoriusGovernance, DAOGovernance } from '../../../types';
 import { formatCoin } from '../../../utils/numberFormats';
 import { validateENSName } from '../../../utils/url';
 import { AddressInput } from '../forms/EthAddressInput';
@@ -32,10 +32,10 @@ export function DelegateModal({ close }: { close: Function }) {
   const user = useAccount();
 
   const azoriusGovernance = governance as AzoriusGovernance;
-  const decentGovernance = azoriusGovernance as DecentGovernance;
+  const daoGovernance = azoriusGovernance as DAOGovernance;
   const delegateeDisplayName = useGetAccountName(azoriusGovernance?.votesToken?.delegatee);
   const lockedDelegateeDisplayName = useGetAccountName(
-    decentGovernance?.lockedVotesToken?.delegatee,
+    daoGovernance?.lockedVotesToken?.delegatee,
   );
   const [contractCall, pending] = useTransaction();
   const { addressValidationTest } = useValidationAddress();
@@ -146,8 +146,8 @@ export function DelegateModal({ close }: { close: Function }) {
           )}
         </Text>
       </SimpleGrid>
-      {decentGovernance.lockedVotesToken?.balance !== null &&
-        decentGovernance.lockedVotesToken?.balance !== undefined && (
+      {daoGovernance.lockedVotesToken?.balance !== null &&
+        daoGovernance.lockedVotesToken?.balance !== undefined && (
           <SimpleGrid
             columns={2}
             color="color-neutral-400"
@@ -163,7 +163,7 @@ export function DelegateModal({ close }: { close: Function }) {
               color="color-neutral-300"
             >
               {formatCoin(
-                decentGovernance.lockedVotesToken.balance || 0n,
+                daoGovernance.lockedVotesToken.balance || 0n,
                 false,
                 azoriusGovernance.votesToken.decimals,
                 azoriusGovernance.votesToken.symbol,
@@ -179,12 +179,12 @@ export function DelegateModal({ close }: { close: Function }) {
               align="end"
               color="color-neutral-300"
             >
-              {decentGovernance.lockedVotesToken.delegatee === zeroAddress ? (
+              {daoGovernance.lockedVotesToken.delegatee === zeroAddress ? (
                 '--'
               ) : (
                 <EtherscanLink
                   type="address"
-                  value={decentGovernance.lockedVotesToken.delegatee}
+                  value={daoGovernance.lockedVotesToken.delegatee}
                 >
                   {lockedDelegateeDisplayName.displayName}
                 </EtherscanLink>
@@ -241,8 +241,8 @@ export function DelegateModal({ close }: { close: Function }) {
             >
               {t('buttonDelegate')}
             </Button>
-            {decentGovernance.lockedVotesToken?.balance !== null &&
-              decentGovernance.lockedVotesToken?.balance !== undefined && (
+            {daoGovernance.lockedVotesToken?.balance !== null &&
+              daoGovernance.lockedVotesToken?.balance !== undefined && (
                 <Button
                   marginTop="2rem"
                   width="100%"
@@ -251,7 +251,7 @@ export function DelegateModal({ close }: { close: Function }) {
                     !!errors.address ||
                     pending ||
                     !values.address ||
-                    values.address === decentGovernance.lockedVotesToken.delegatee
+                    values.address === daoGovernance.lockedVotesToken.delegatee
                   }
                 >
                   {t('buttonLockedDelegate')}

@@ -38,7 +38,7 @@ This section describes the process during the initial creation of a new DAO.
   - **Reasoning:**
     - Most networks require a minimum stake to be deposited for the Paymaster on the `EntryPoint` contract (`bundlerMinimumStake`).
     - The `EntryPoint.addStake` function requires the deposit to come from the Paymaster contract itself (`msg.sender` must be the Paymaster).
-    - Our `DecentPaymasterV1.addStake` function facilitates this by forwarding `msg.value` to the `EntryPoint`, but this function is restricted by `onlyOwner`.
+    - Our `DAOPaymasterV1.addStake` function facilitates this by forwarding `msg.value` to the `EntryPoint`, but this function is restricted by `onlyOwner`.
     - The designated owner of the Paymaster is the DAO Safe contract.
     - During the creation transaction, the DAO Safe does not yet exist and, more importantly, possesses no funds to forward as `msg.value` to the `Paymaster.addStake` function.
   - **Result:** DAO users must enable sponsored voting _after_ the DAO is created and funded, using the DAO Settings page (described in Section 3.2).
@@ -273,7 +273,7 @@ This section describes the process during the initial creation of a new DAO.
 - **Feature Flag:** `flag_gasless_voting`
 - **Core Components:** `GaslessVotingToggleDAOSettings` (needs redesign -> becomes PaymasterStatus component), `CastVote` component, `useCastVote` hook, `RefillGasTankModal`.
 - **Key Hooks:** `useDepositInfo`, ~~`useKeyValuePairs`~~ (KV logic removed), `useSubmitProposal`.
-- **Contracts:** Paymaster (`DecentPaymasterV1` mastercopy deployed via `ZodiacModuleProxyFactory`), `EntryPoint07`, ~~`KeyValuePairs`~~ (KV logic removed), Voting Strategy Validators (`LinearERC20VotingV1ValidatorV1`, `LinearERC721VotingV1ValidatorV1`).
+- **Contracts:** Paymaster (`DAOPaymasterV1` mastercopy deployed via `ZodiacModuleProxyFactory`), `EntryPoint07`, ~~`KeyValuePairs`~~ (KV logic removed), Voting Strategy Validators (`LinearERC20VotingV1ValidatorV1`, `LinearERC721VotingV1ValidatorV1`).
 - **State Management:** `useDaoInfoStore` (remove `gaslessVotingEnabled` state, keep `paymasterAddress`).
 - **Utils:** `gaslessVoting.ts` (e.g., `getPaymasterAddress`), `prepareRefillPaymasterActionData.ts`.
 - **Backend/Infrastructure:** Relies on an ERC-4337 Bundler service (RPC endpoint configured via `rpcEndpoint`).

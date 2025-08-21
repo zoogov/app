@@ -1,5 +1,5 @@
 import { Button, Flex, IconButton, Show, Text } from '@chakra-ui/react';
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { ArrowLeft, Trash, X } from '@phosphor-icons/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +19,7 @@ import { SettingsPermissionsStrategyForm } from '../../../../components/SafeSett
 import { Card } from '../../../../components/ui/cards/Card';
 import { ModalBase } from '../../../../components/ui/modals/ModalBase';
 import { ModalType } from '../../../../components/ui/modals/ModalProvider';
-import { useDecentModal } from '../../../../components/ui/modals/useDecentModal';
+import { useDAOModal } from '../../../../components/ui/modals/useDecentModal';
 import NestedPageHeader from '../../../../components/ui/page/Header/NestedPageHeader';
 import Divider from '../../../../components/ui/utils/Divider';
 import {
@@ -45,7 +45,7 @@ import {
 } from '../../../../types';
 
 // @todo Remove in favour of AddCreateProposalPermissionModal.
-// https://linear.app/decent-labs/issue/ENG-842/fix-permissions-settings-ux-flows
+// https://linear.app/hanzoai/issue/ENG-842/fix-permissions-settings-ux-flows
 export function SafePermissionsCreateProposal() {
   const publicClient = useNetworkPublicClient();
   const { t } = useTranslation(['settings', 'common', 'modals']);
@@ -77,8 +77,8 @@ export function SafePermissionsCreateProposal() {
     node: { safe },
   } = useDAOStore({ daoKey });
   const azoriusGovernance = governance as AzoriusGovernance;
-  const { open: openSelectAddPermissionModal } = useDecentModal(ModalType.ADD_PERMISSION);
-  const { open: openConfirmDeleteStrategyModal } = useDecentModal(
+  const { open: openSelectAddPermissionModal } = useDAOModal(ModalType.ADD_PERMISSION);
+  const { open: openConfirmDeleteStrategyModal } = useDAOModal(
     ModalType.CONFIRM_DELETE_STRATEGY,
   );
   const { addAction, resetActions } = useProposalActionsStore();

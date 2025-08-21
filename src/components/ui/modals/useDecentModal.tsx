@@ -13,7 +13,7 @@ import {
  * @param modal the ModalType to open.
  * @param props optional arbitrary key:value properties to pass to the modal
  */
-export const useDecentModal = <T extends ModalType>(modal: T, props?: ModalPropsTypes[T]) => {
+export const useDAOModal = <T extends ModalType>(modal: T, props?: ModalPropsTypes[T]) => {
   const { pushModal, openModals, popModal } = useContext<IModalContext>(ModalContext);
   return {
     open: () => {

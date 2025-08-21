@@ -20,7 +20,7 @@ import { DEFAULT_DATE_FORMAT, formatCoin } from '../../utils';
 import { prepareWithdrawToDAOActionData } from '../../utils/dao/prepareWithdrawToDAOActionData';
 import { isDemoMode } from '../../utils/demoMode';
 import { ModalType } from '../ui/modals/ModalProvider';
-import { useDecentModal } from '../ui/modals/useDecentModal';
+import { useDAOModal } from '../ui/modals/useDecentModal';
 
 function getPaymentContainerProps(section: 'top' | 'bottom', isActiveStream: boolean) {
   const borderTopRadius = section === 'top' ? '0.75rem' : '0';
@@ -388,7 +388,7 @@ export function RolePaymentDetails({
     return getAddress(assignedTerm.nominee);
   }, [assignedTerm, roleHatWearerAddress]);
 
-  const { open: withdraw } = useDecentModal(ModalType.WITHDRAW_PAYMENT, {
+  const { open: withdraw } = useDAOModal(ModalType.WITHDRAW_PAYMENT, {
     paymentAssetLogo: payment.asset.logo,
     paymentAssetSymbol: payment.asset.symbol,
     paymentAssetDecimals: payment.asset.decimals,

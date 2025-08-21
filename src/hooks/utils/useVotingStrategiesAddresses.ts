@@ -1,12 +1,12 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { useCallback } from 'react';
 import { Address, getContract, zeroAddress } from 'viem';
 import { SENTINEL_ADDRESS } from '../../constants/common';
 import { useDAOStore } from '../../providers/App/AppProvider';
 import { useSafeAPI } from '../../providers/App/hooks/useSafeAPI';
-import { DecentModule } from '../../types';
+import { DAOModule } from '../../types';
 import { getAzoriusModuleFromModules } from '../../utils';
-import { useDecentModules } from '../DAO/loaders/useDecentModules';
+import { useDAOModules } from '../DAO/loaders/useDAOModules';
 import { useCurrentDAOKey } from '../DAO/useCurrentDAOKey';
 import useNetworkPublicClient from '../useNetworkPublicClient';
 import { useAddressContractType } from './useAddressContractType';
@@ -15,7 +15,7 @@ const useVotingStrategiesAddresses = () => {
   const publicClient = useNetworkPublicClient();
   const safeAPI = useSafeAPI();
   const { getAddressContractType } = useAddressContractType();
-  const lookupModules = useDecentModules();
+  const lookupModules = useDAOModules();
   const { daoKey } = useCurrentDAOKey();
   const {
     node: { modules },
@@ -23,7 +23,7 @@ const useVotingStrategiesAddresses = () => {
 
   const getVotingStrategies = useCallback(
     async (safeAddress?: Address) => {
-      let azoriusModule: DecentModule | undefined;
+      let azoriusModule: DAOModule | undefined;
 
       if (safeAddress) {
         if (!safeAPI) {

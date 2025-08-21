@@ -59,7 +59,7 @@ export function SafeProposalDappsModal({ onClose }: { onClose: () => void }) {
             title="Custom dApp"
             appUrl=""
             iconUrl=""
-            description="A custom decentralized application URL provided by the user."
+            description="A custom daoralized application URL provided by the user."
             categories={['Custom']}
             onClose={onClose}
           />

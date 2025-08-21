@@ -56,7 +56,7 @@
   "labelAddAllocation": "Добавить распределение",
   "labelAddProposer": "",
   "labelTokenName": "Имя",
-  "helperTokenName": "Введите имя токена управления, например Decent.",
+  "helperTokenName": "Введите имя токена управления, например DAO.",
   "labelTokenSymbol": "Символ",
   "helperTokenSymbol": "2-6 символов, т.е. DCNT, SAFE, USDC.",
   "labelTokenSupply": "Общее предложение",

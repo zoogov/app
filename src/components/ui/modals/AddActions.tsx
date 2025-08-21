@@ -9,7 +9,7 @@ import { ProposalActionType } from '../../../types';
 import { prepareSendAssetsActionData } from '../../../utils/dao/prepareSendAssetsActionData';
 import { ModalBase } from './ModalBase';
 import { ModalType } from './ModalProvider';
-import { useDecentModal } from './useDecentModal';
+import { useDAOModal } from './useDecentModal';
 
 function ActionCard({
   title,
@@ -80,7 +80,7 @@ export function AddActions() {
   const { addAction } = useProposalActionsStore();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { open: openSendAssetsModal } = useDecentModal(ModalType.SEND_ASSETS, {
+  const { open: openSendAssetsModal } = useDAOModal(ModalType.SEND_ASSETS, {
     onSubmit: sendAssetsData => {
       const { action } = prepareSendAssetsActionData(sendAssetsData);
 
@@ -89,7 +89,7 @@ export function AddActions() {
     submitButtonText: t('Add Action', { ns: 'modals' }),
   });
 
-  const { open: openTransactionBuilderModal } = useDecentModal(ModalType.TRANSACTION_BUILDER, {
+  const { open: openTransactionBuilderModal } = useDAOModal(ModalType.TRANSACTION_BUILDER, {
     onSubmit: transactionBuilderData => {
       const actionType = ProposalActionType.TRANSACTION_BUILDER;
 

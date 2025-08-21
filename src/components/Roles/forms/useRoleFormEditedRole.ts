@@ -1,7 +1,7 @@
 import { useFormikContext } from 'formik';
 import { useMemo } from 'react';
 import {
-  DecentTree,
+  DAOTree,
   EditBadgeStatus,
   EditedRole,
   EditedRoleFieldNames,
@@ -21,7 +21,7 @@ const addRemoveField = (
   return [...fieldNames, fieldName];
 };
 
-export function useRoleFormEditedRole({ hatsTree }: { hatsTree: DecentTree | undefined | null }) {
+export function useRoleFormEditedRole({ hatsTree }: { hatsTree: DAOTree | undefined | null }) {
   const { values } = useFormikContext<RoleFormValues>();
   const existingRoleHat = useMemo(
     () =>

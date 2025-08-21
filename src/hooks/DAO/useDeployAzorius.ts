@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -23,8 +23,8 @@ import {
 import useNetworkPublicClient from '../useNetworkPublicClient';
 import { useAddressContractType } from '../utils/useAddressContractType';
 import { useCanUserCreateProposal } from '../utils/useCanUserSubmitProposal';
-import { DecentModule } from './../../types/fractal';
-import { useDecentModules } from './loaders/useDecentModules';
+import { DAOModule } from './../../types/fractal';
+import { useDAOModules } from './loaders/useDAOModules';
 import useSubmitProposal from './proposal/useSubmitProposal';
 import { useCurrentDAOKey } from './useCurrentDAOKey';
 
@@ -66,7 +66,7 @@ const useDeployAzorius = () => {
 
   const publicClient = useNetworkPublicClient();
   const safeApi = useSafeAPI();
-  const lookupModules = useDecentModules();
+  const lookupModules = useDAOModules();
 
   const getParentDAOModules = useCallback(
     async (address: Address) => {
@@ -102,7 +102,7 @@ const useDeployAzorius = () => {
       let parentStrategyAddress: Address | undefined;
       let parentStrategyType: VotingStrategyType | undefined;
       let attachFractalModule = false;
-      let parentModules: DecentModule[];
+      let parentModules: DAOModule[];
 
       if (subgraphInfo?.parentAddress) {
         const loadedParentModule = await getParentDAOModules(subgraphInfo.parentAddress);

@@ -13,7 +13,7 @@ import { useNetworkConfigStore } from './providers/NetworkConfig/useNetworkConfi
 import Providers from './providers/Providers';
 import { router } from './router';
 
-function DecentRouterProvider() {
+function DAORouterProvider() {
   const { addressPrefix } = useNetworkConfigStore();
   const urlParams = new URLSearchParams(window.location.search);
   const addressWithPrefix = urlParams.get('dao');
@@ -34,7 +34,7 @@ async function initializeApp() {
     ReactDOM.createRoot(root).render(
       <React.StrictMode>
         <Providers>
-          <DecentRouterProvider />
+          <DAORouterProvider />
         </Providers>
       </React.StrictMode>,
     );

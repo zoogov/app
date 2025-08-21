@@ -44,19 +44,19 @@ type ContractsBase = {
 
   claimErc20MasterCopy: Address;
 
-  decentAutonomousAdminV1MasterCopy: Address;
+  daoAutonomousAdminV1MasterCopy: Address;
 
   paymaster: {
-    decentPaymasterV1MasterCopy: Address;
+    daoPaymasterV1MasterCopy: Address;
     linearERC20VotingV1ValidatorV1: Address;
     linearERC721VotingV1ValidatorV1: Address;
   };
 
   keyValuePairs: Address;
 
-  decentHatsCreationModule: Address;
-  decentHatsModificationModule: Address;
-  decentSablierStreamManagementModule: Address;
+  daoHatsCreationModule: Address;
+  daoHatsModificationModule: Address;
+  daoSablierStreamManagementModule: Address;
 
   hatsProtocol: Address;
   erc6551Registry: Address;
@@ -80,7 +80,7 @@ type NetworkConfigBase = {
   addressPrefix: NetworkPrefix;
   nativeTokenIcon: string;
   isENSSupported: boolean;
-  decentSubgraph: TheGraphConfig;
+  daoSubgraph: TheGraphConfig;
   sablierSubgraph: TheGraphConfig;
   moralis: {
     chainSupported: boolean;

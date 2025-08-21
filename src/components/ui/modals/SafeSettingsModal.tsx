@@ -1,5 +1,5 @@
 import { Button, Flex, Text } from '@chakra-ui/react';
-import { abis, legacy } from '@decentdao/decent-contracts';
+import { abis, legacy } from '@luxdao/contracts';
 import { Formik, Form, useFormikContext } from 'formik';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -448,7 +448,7 @@ export function SafeSettingsModal({
       if (paymasterAddress === null) {
         // Paymaster does not exist, deploy a new one
         const paymasterInitData = encodeFunctionData({
-          abi: legacy.abis.DecentPaymasterV1,
+          abi: legacy.abis.DAOPaymasterV1,
           functionName: 'initialize',
           args: [
             encodeAbiParameters(parseAbiParameters(['address', 'address', 'address']), [
@@ -466,7 +466,7 @@ export function SafeSettingsModal({
           parameters: [
             {
               signature: 'address',
-              value: paymaster.decentPaymasterV1MasterCopy,
+              value: paymaster.daoPaymasterV1MasterCopy,
             },
             {
               signature: 'bytes',
@@ -489,7 +489,7 @@ export function SafeSettingsModal({
       const predictedPaymasterAddress = getPaymasterAddress({
         safeAddress: safe.address,
         zodiacModuleProxyFactory,
-        paymasterMastercopy: paymaster.decentPaymasterV1MasterCopy,
+        paymasterMastercopy: paymaster.daoPaymasterV1MasterCopy,
         entryPoint: accountAbstraction.entryPointv07,
         lightAccountFactory: accountAbstraction.lightAccountFactory,
         chainId,

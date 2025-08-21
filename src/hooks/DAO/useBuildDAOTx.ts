@@ -115,7 +115,7 @@ const useBuildDAOTx = () => {
       });
 
       const buildSafeTxParams = {
-        shouldSetName: true, // We KNOW this will always be true because the Decent UI doesn't allow creating a safe without a name
+        shouldSetName: true, // We KNOW this will always be true because the DAO UI doesn't allow creating a safe without a name
         shouldSetSnapshot: daoData.snapshotENS !== '',
       };
 

@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Address } from 'viem';
 import { StakingTokenData } from '../../../types/revenueSharing';
 
-const DECENT_API_BASE_URL = 'https://api.decent.build';
+const DECENT_API_BASE_URL = 'https://api.dao.build';
 
 const axiosClient = axios.create({ baseURL: DECENT_API_BASE_URL });
 
@@ -17,7 +17,7 @@ interface DAOQueryResponse {
   data: DAO[];
 }
 
-// @todo this file should be replaced with decent-sdk package once it's ready
+// @todo this file should be replaced with sdk package once it's ready
 export async function queryDaosByName(name: string) {
   const response: AxiosResponse<DAOQueryResponse> = await axiosClient.get('/d', {
     params: { name },

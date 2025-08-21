@@ -1,6 +1,6 @@
 import { Tooltip, TooltipProps } from '@chakra-ui/react';
 
-export function DecentTooltip(props: TooltipProps) {
+export function DAOTooltip(props: TooltipProps) {
   // If children is undefined - the Tooltip will wreck the page entirely.
   // Now normally - this should never happen.
   // But some assets metadata might come malfunctioned - so we need to at least prevent page crashes.
@@ -22,3 +22,7 @@ export function DecentTooltip(props: TooltipProps) {
     />
   );
 }
+
+// Export as both names for compatibility
+export const DecentTooltip = DAOTooltip;
+export { DAOTooltip as Tooltip };

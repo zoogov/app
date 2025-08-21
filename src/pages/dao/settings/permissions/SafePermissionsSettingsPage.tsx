@@ -9,7 +9,7 @@ import { Card } from '../../../../components/ui/cards/Card';
 import NoDataCard from '../../../../components/ui/containers/NoDataCard';
 import { BarLoader } from '../../../../components/ui/loaders/BarLoader';
 import { ModalType } from '../../../../components/ui/modals/ModalProvider';
-import { useDecentModal } from '../../../../components/ui/modals/useDecentModal';
+import { useDAOModal } from '../../../../components/ui/modals/useDecentModal';
 import NestedPageHeader from '../../../../components/ui/page/Header/NestedPageHeader';
 import Divider from '../../../../components/ui/utils/Divider';
 import { NEUTRAL_2_82_TRANSPARENT } from '../../../../constants/common';
@@ -39,7 +39,7 @@ export function SafePermissionsSettingsPage() {
   const [searchParams] = useSearchParams();
   const votingStrategyAddress = searchParams.get('votingStrategy');
 
-  const { open: openAddPermissionModal } = useDecentModal(ModalType.ADD_PERMISSION);
+  const { open: openAddPermissionModal } = useDAOModal(ModalType.ADD_PERMISSION);
 
   if (isMobile && votingStrategyAddress) {
     return <Outlet />;

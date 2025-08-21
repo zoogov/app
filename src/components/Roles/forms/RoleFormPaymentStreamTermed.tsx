@@ -379,7 +379,7 @@ export default function RoleFormPaymentStreamTermed({ paymentIndex }: { paymentI
           <SectionTitle
             title={t('asset')}
             tooltipContent={t('addPaymentStreamSubTitle')}
-            externalLink="https://docs.decentdao.org/app/user-guide/roles-and-streaming/streaming-payroll-and-vesting"
+            externalLink="https://docs.luxdao.org/app/user-guide/roles-and-streaming/streaming-payroll-and-vesting"
           />
           <AssetSelector
             formIndex={paymentIndex}

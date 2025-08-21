@@ -139,8 +139,8 @@ export interface DAOSubgraph {
   gasTankAddress?: Address;
 }
 
-// @todo should we add other Decent Module types here?
-export enum DecentModuleType {
+// @todo should we add other DAO Module types here?
+export enum DAOModuleType {
   // replaces FractalModuleType
   AZORIUS, // Token Module
   FRACTAL, // CHILD GOVERNANCE MODULE
@@ -152,7 +152,7 @@ export interface IDAO {
   // replaces DaoInfo
   safe: GnosisSafe | null;
   subgraphInfo: DAOSubgraph | null;
-  modules: DecentModule[] | null;
+  modules: DAOModule[] | null;
 }
 
 export interface GovernanceActivity extends ActivityBase {
@@ -186,7 +186,7 @@ export interface Fractal {
   guard: FreezeGuard;
   guardAccountData: GuardAccountData;
   governance: FractalGovernance;
-  treasury: DecentTreasury;
+  treasury: DAOTreasury;
   governanceContracts: FractalGovernanceContracts;
   guardContracts: FractalGuardContracts;
 }
@@ -225,11 +225,11 @@ export interface DaoHierarchyInfo {
   parentAddress: Address | null;
   childAddresses: Address[];
   proposalTemplatesHash: string | null;
-  modules: DecentModule[];
+  modules: DAOModule[];
   votingStrategies: DaoHierarchyStrategyType[];
 }
 
-export interface DecentModule {
+export interface DAOModule {
   moduleAddress: Address;
   moduleType: FractalModuleType;
 }
@@ -263,7 +263,7 @@ export interface GuardAccountData {
 }
 
 export type TransferWithTokenInfo = TransferResponse & { tokenInfo: TokenInfoResponse };
-export interface DecentTreasury {
+export interface DAOTreasury {
   totalUsdValue: number;
   assetsFungible: TokenBalance[];
   assetsNonFungible: NFTBalance[];
@@ -271,7 +271,7 @@ export interface DecentTreasury {
   transfers: TransferDisplayData[] | null;
 }
 
-export type FractalGovernance = AzoriusGovernance | DecentGovernance | SafeMultisigGovernance;
+export type FractalGovernance = AzoriusGovernance | DAOGovernance | SafeMultisigGovernance;
 
 export interface AzoriusGovernance extends Governance {
   votingStrategy: VotingStrategyAzorius | undefined;
@@ -279,7 +279,7 @@ export interface AzoriusGovernance extends Governance {
   erc721Tokens?: ERC721TokenData[];
 }
 
-export interface DecentGovernance extends AzoriusGovernance {
+export interface DAOGovernance extends AzoriusGovernance {
   lockedVotesToken?: VotesTokenData;
 }
 export interface SafeMultisigGovernance extends Governance {

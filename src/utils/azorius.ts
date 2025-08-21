@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import {
   Address,
   GetContractEventsReturnType,
@@ -15,7 +15,7 @@ import {
   DataDecoded,
   DecodedTransaction,
   ERC721ProposalVote,
-  DecentModule,
+  DAOModule,
   FractalModuleType,
   FractalProposalState,
   MetaTransaction,
@@ -356,7 +356,7 @@ export const parseDecodedData = (
   return Array.from(eventTransactionMap.values());
 };
 
-export function getAzoriusModuleFromModules(modules: DecentModule[]) {
+export function getAzoriusModuleFromModules(modules: DAOModule[]) {
   return modules.find(module => module.moduleType === FractalModuleType.AZORIUS);
 }
 

@@ -10,7 +10,7 @@ import { RoleFormValues, RoleHatFormValue } from '../../../types/roles';
 import { DevSet10MinPaymentStream } from '../../../utils/dev/DevSet10MinPaymentStream';
 import { DatePicker } from '../../ui/forms/DatePicker';
 import { ModalType } from '../../ui/modals/ModalProvider';
-import { useDecentModal } from '../../ui/modals/useDecentModal';
+import { useDAOModal } from '../../ui/modals/useDecentModal';
 import { AssetSelector } from './RoleFormAssetSelector';
 import { SectionTitle } from './RoleFormSectionTitle';
 
@@ -140,7 +140,7 @@ export function RoleFormPaymentStream({ formIndex }: { formIndex: number }) {
     setFieldValue('roleEditing.roleEditingPaymentIndex', undefined);
   }, [setFieldValue, formIndex, payment]);
 
-  const { open: confirmCancelPayment } = useDecentModal(ModalType.CONFIRM_CANCEL_PAYMENT, {
+  const { open: confirmCancelPayment } = useDAOModal(ModalType.CONFIRM_CANCEL_PAYMENT, {
     onSubmit: handleConfirmCancelPayment,
   });
 
@@ -182,7 +182,7 @@ export function RoleFormPaymentStream({ formIndex }: { formIndex: number }) {
         <SectionTitle
           title={t('asset')}
           tooltipContent={t('addPaymentStreamSubTitle')}
-          externalLink="https://docs.decentdao.org/app/user-guide/roles-and-streaming/streaming-payroll-and-vesting"
+          externalLink="https://docs.luxdao.org/app/user-guide/roles-and-streaming/streaming-payroll-and-vesting"
         />
         <AssetSelector
           formIndex={formIndex}

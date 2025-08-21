@@ -21,7 +21,7 @@ import { FractalProposalState, MultisigProposal } from '../../../types';
 import { SectionContentBox } from '../../ui/containers/ContentBox';
 import { OptionMenu } from '../../ui/menus/OptionMenu';
 import { ModalType } from '../../ui/modals/ModalProvider';
-import { useDecentModal } from '../../ui/modals/useDecentModal';
+import { useDAOModal } from '../../ui/modals/useDecentModal';
 
 const useSignTransaction = () => {
   const { daoKey } = useCurrentDAOKey();
@@ -233,7 +233,7 @@ export function SignatureSection({ proposal }: { proposal: MultisigProposal }) {
     });
   };
 
-  const { open: openConfirmRejectProposalModal } = useDecentModal(
+  const { open: openConfirmRejectProposalModal } = useDAOModal(
     ModalType.CONFIRM_REJECT_PROPOSAL,
     {
       submitRejection: handleConfirmSubmitRejectionProposal,

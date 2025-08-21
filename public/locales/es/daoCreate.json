@@ -56,7 +56,7 @@
   "labelAddAllocation": "Añadir asignación",
   "labelAddProposer": "",
   "labelTokenName": "Nombre",
-  "helperTokenName": "Introduzca el nombre de su ficha de gobernanza, es decir, Decente.",
+  "helperTokenName": "Introduzca el nombre de su ficha de gobernanza, es decir, DAOe.",
   "labelTokenSymbol": "Símbolo",
   "helperTokenSymbol": "2-6 caracteres, es decir, DCNT, SAFE, USDC.",
   "labelTokenSupply": "Suministro total",

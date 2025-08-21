@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { Address, GetEnsNameReturnType } from 'viem';
-import { createDecentSubgraphClient } from '../../graphql';
+import { createDAOSubgraphClient } from '../../graphql';
 import { DAOQuery, DAOQueryResponse } from '../../graphql/DAOQueries';
 import { useNetworkConfigStore } from '../../providers/NetworkConfig/useNetworkConfigStore';
 import { NetworkConfig } from '../../types/network';
@@ -17,7 +17,7 @@ export const getSafeName = async (
     return ensName;
   }
 
-  const client = createDecentSubgraphClient(networkConfig);
+  const client = createDAOSubgraphClient(networkConfig);
   const queryResult = await client.query<DAOQueryResponse>(DAOQuery, { safeAddress: address });
 
   const subgraphName = queryResult.data?.daos[0]?.name;

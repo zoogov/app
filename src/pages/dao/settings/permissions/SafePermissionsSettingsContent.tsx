@@ -8,7 +8,7 @@ import NoDataCard from '../../../../components/ui/containers/NoDataCard';
 import { BarLoader } from '../../../../components/ui/loaders/BarLoader';
 import { ModalType } from '../../../../components/ui/modals/ModalProvider';
 import { SafeSettingsEdits } from '../../../../components/ui/modals/SafeSettingsModal';
-import { useDecentModal } from '../../../../components/ui/modals/useDecentModal';
+import { useDAOModal } from '../../../../components/ui/modals/useDecentModal';
 import Divider from '../../../../components/ui/utils/Divider';
 import { NEUTRAL_2_82_TRANSPARENT } from '../../../../constants/common';
 import { useCurrentDAOKey } from '../../../../hooks/DAO/useCurrentDAOKey';
@@ -31,18 +31,18 @@ export function SafePermissionsSettingsContent() {
 
   const { values } = useFormikContext<SafeSettingsEdits>();
 
-  const { open: openAddCreateProposalPermissionModal } = useDecentModal(
+  const { open: openAddCreateProposalPermissionModal } = useDAOModal(
     ModalType.ADD_CREATE_PROPOSAL_PERMISSION,
     {
       votingStrategyAddress: null,
     },
   );
 
-  const { open: openAddPermissionModal } = useDecentModal(ModalType.ADD_PERMISSION, {
+  const { open: openAddPermissionModal } = useDAOModal(ModalType.ADD_PERMISSION, {
     openAddCreateProposalPermissionModal,
   });
 
-  const { open: openCreateProposalPermissionModal } = useDecentModal(
+  const { open: openCreateProposalPermissionModal } = useDAOModal(
     ModalType.ADD_CREATE_PROPOSAL_PERMISSION,
     {
       votingStrategyAddress: linearVotingErc20Address || null,

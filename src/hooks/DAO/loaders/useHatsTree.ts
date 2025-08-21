@@ -7,7 +7,7 @@ import { hatsSubgraphClient } from '../../../graphql/hats';
 import { useDAOStore } from '../../../providers/App/AppProvider';
 import useIPFSClient from '../../../providers/App/hooks/useIPFSClient';
 import { useNetworkConfigStore } from '../../../providers/NetworkConfig/useNetworkConfigStore';
-import { DecentHatsError } from '../../../store/roles/rolesStoreUtils';
+import { DAOHatsError } from '../../../store/roles/rolesStoreUtils';
 import { useRolesStore } from '../../../store/roles/useRolesStore';
 import useNetworkPublicClient from '../../useNetworkPublicClient';
 import { CacheExpiry, CacheKeys } from '../../utils/cache/cacheDefaults';
@@ -110,7 +110,7 @@ const useHatsTree = () => {
             sablierSubgraphClient,
           });
         } catch (e) {
-          if (e instanceof DecentHatsError) {
+          if (e instanceof DAOHatsError) {
             toast.error(e.message);
           }
         }

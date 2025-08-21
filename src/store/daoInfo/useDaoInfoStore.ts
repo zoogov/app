@@ -1,6 +1,6 @@
 import { getAddress } from 'viem';
 import { create } from 'zustand';
-import { DAOOwnedEntities, DAOSubgraph, DecentModule, IDAO, SafeWithNextNonce } from '../../types';
+import { DAOOwnedEntities, DAOSubgraph, DAOModule, IDAO, SafeWithNextNonce } from '../../types';
 
 export const initialDaoInfoStore: IDAO & DAOOwnedEntities = {
   safe: null,
@@ -13,7 +13,7 @@ export const initialDaoInfoStore: IDAO & DAOOwnedEntities = {
 export interface DaoInfoStore extends IDAO {
   setSafeInfo: (safe: SafeWithNextNonce) => void;
   setDaoInfo: (daoInfo: DAOSubgraph) => void;
-  setDecentModules: (modules: DecentModule[]) => void;
+  setDAOModules: (modules: DAOModule[]) => void;
   resetDaoInfoStore: () => void;
 }
 
@@ -39,7 +39,7 @@ export const useDaoInfoStore = create<DaoInfoStore>()(set => ({
     set({ subgraphInfo });
   },
 
-  setDecentModules: (modules: DecentModule[]) => {
+  setDAOModules: (modules: DAOModule[]) => {
     set({ modules });
   },
 

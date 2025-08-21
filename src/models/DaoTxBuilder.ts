@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { Address, encodeFunctionData, Hex, PublicClient, zeroAddress } from 'viem';
 import GnosisSafeL2Abi from '../assets/abi/GnosisSafeL2';
 import MultiSendCallOnlyAbi from '../assets/abi/MultiSendCallOnly';
@@ -12,7 +12,7 @@ import {
 } from '../types';
 import { BaseTxBuilder } from './BaseTxBuilder';
 import { TxBuilderFactory } from './TxBuilderFactory';
-import { DecentModule, fractalModuleData } from './helpers/fractalModuleData';
+import { DAOModule, fractalModuleData } from './helpers/fractalModuleData';
 
 export class DaoTxBuilder extends BaseTxBuilder {
   private readonly saltNum;
@@ -231,7 +231,7 @@ export class DaoTxBuilder extends BaseTxBuilder {
   //
 
   private setFractalModuleTxs(): void {
-    const { enableFractalModuleTx, deployFractalModuleTx }: DecentModule = fractalModuleData(
+    const { enableFractalModuleTx, deployFractalModuleTx }: DAOModule = fractalModuleData(
       this.moduleFractalMasterCopy,
       this.zodiacModuleProxyFactory,
       this.safeContractAddress,

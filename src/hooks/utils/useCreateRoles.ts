@@ -1,4 +1,4 @@
-import { abis, legacy } from '@decentdao/decent-contracts';
+import { abis, legacy } from '@luxdao/contracts';
 import {
   checkAndEncodeArgs,
   HATS_MODULES_FACTORY_ABI,
@@ -111,8 +111,8 @@ export default function useCreateRoles() {
     chain,
     contracts: {
       hatsProtocol,
-      decentHatsCreationModule,
-      decentHatsModificationModule,
+      daoHatsCreationModule,
+      daoHatsModificationModule,
       hatsAccount1ofNMasterCopy,
       erc6551Registry,
       keyValuePairs,
@@ -122,7 +122,7 @@ export default function useCreateRoles() {
       linearVotingErc721HatsWhitelistingMasterCopy,
       linearVotingErc721HatsWhitelistingV1MasterCopy,
       zodiacModuleProxyFactory,
-      decentAutonomousAdminV1MasterCopy,
+      daoAutonomousAdminV1MasterCopy,
       hatsElectionsEligibilityMasterCopy,
       paymaster,
       accountAbstraction,
@@ -261,7 +261,7 @@ export default function useCreateRoles() {
         if (gaslessVotingEnabled && paymasterAddress) {
           optionallyWhitelistWhitelistingStrategyOnPaymaster.push({
             calldata: encodeFunctionData({
-              abi: legacy.abis.DecentPaymasterV1,
+              abi: legacy.abis.DAOPaymasterV1,
               functionName: 'setFunctionValidator',
               args: [predictedStrategyAddress, voteSelector, voteValidator],
             }),
@@ -379,7 +379,7 @@ export default function useCreateRoles() {
         if (gaslessVotingEnabled && paymasterAddress) {
           optionallyWhitelistWhitelistingStrategyOnPaymaster.push({
             calldata: encodeFunctionData({
-              abi: legacy.abis.DecentPaymasterV1,
+              abi: legacy.abis.DAOPaymasterV1,
               functionName: 'setFunctionValidator',
               args: [predictedStrategyAddress, voteSelector, voteValidator],
             }),
@@ -622,20 +622,20 @@ export default function useCreateRoles() {
     [publicClient, hatsAccount1ofNMasterCopy, chain.id, hatsProtocol, erc6551Registry],
   );
 
-  const getEnableDisableDecentHatsModuleData = useCallback((moduleAddress: Address) => {
-    const enableDecentHatsModuleData = encodeFunctionData({
+  const getEnableDisableDAOHatsModuleData = useCallback((moduleAddress: Address) => {
+    const enableDAOHatsModuleData = encodeFunctionData({
       abi: GnosisSafeL2,
       functionName: 'enableModule',
       args: [moduleAddress],
     });
 
-    const disableDecentHatsModuleData = encodeFunctionData({
+    const disableDAOHatsModuleData = encodeFunctionData({
       abi: GnosisSafeL2,
       functionName: 'disableModule',
       args: [SENTINEL_MODULE, moduleAddress],
     });
 
-    return { enableDecentHatsModuleData, disableDecentHatsModuleData };
+    return { enableDAOHatsModuleData, disableDAOHatsModuleData };
   }, []);
 
   const prepareCreateTopHatProposalData = useCallback(
@@ -644,8 +644,8 @@ export default function useCreateRoles() {
         throw new Error('Can not create top hat without DAO Address');
       }
 
-      const { enableDecentHatsModuleData, disableDecentHatsModuleData } =
-        getEnableDisableDecentHatsModuleData(decentHatsCreationModule);
+      const { enableDAOHatsModuleData, disableDAOHatsModuleData } =
+        getEnableDisableDAOHatsModuleData(daoHatsCreationModule);
 
       const topHat = {
         details: await uploadHatDescription(
@@ -676,7 +676,7 @@ export default function useCreateRoles() {
 
       const addedHats = await createHatStructsForNewTreeFromRolesFormValues(modifiedHats);
       const createAndDeclareTreeData = encodeFunctionData({
-        abi: legacy.abis.DecentHatsCreationModule,
+        abi: legacy.abis.DAOHatsCreationModule,
         functionName: 'createAndDeclareTree',
         args: [
           {
@@ -685,7 +685,7 @@ export default function useCreateRoles() {
             hatsModuleFactory: HATS_MODULES_FACTORY_ADDRESS,
             moduleProxyFactory: zodiacModuleProxyFactory,
             keyValuePairs,
-            decentAutonomousAdminImplementation: decentAutonomousAdminV1MasterCopy,
+            daoAutonomousAdminImplementation: daoAutonomousAdminV1MasterCopy,
             hatsAccountImplementation: hatsAccount1ofNMasterCopy,
             hatsElectionsEligibilityImplementation: hatsElectionsEligibilityMasterCopy,
             topHat,
@@ -699,14 +699,14 @@ export default function useCreateRoles() {
         targets: [
           ...whitelistSablierTxs.map(({ targetAddress }) => targetAddress),
           safeAddress,
-          decentHatsCreationModule,
+          daoHatsCreationModule,
           safeAddress,
         ],
         calldatas: [
           ...whitelistSablierTxs.map(({ calldata }) => calldata),
-          enableDecentHatsModuleData,
+          enableDAOHatsModuleData,
           createAndDeclareTreeData,
-          disableDecentHatsModuleData,
+          disableDAOHatsModuleData,
         ],
         metaData: proposalMetadata,
         values: [...whitelistSablierTxs.map(() => 0n), 0n, 0n, 0n],
@@ -714,8 +714,8 @@ export default function useCreateRoles() {
     },
     [
       safeAddress,
-      getEnableDisableDecentHatsModuleData,
-      decentHatsCreationModule,
+      getEnableDisableDAOHatsModuleData,
+      daoHatsCreationModule,
       subgraphInfo?.daoName,
       ipfsClient,
       createWhitelistSablierTransactions,
@@ -724,7 +724,7 @@ export default function useCreateRoles() {
       erc6551Registry,
       zodiacModuleProxyFactory,
       keyValuePairs,
-      decentAutonomousAdminV1MasterCopy,
+      daoAutonomousAdminV1MasterCopy,
       hatsAccount1ofNMasterCopy,
       hatsElectionsEligibilityMasterCopy,
     ],
@@ -762,11 +762,11 @@ export default function useCreateRoles() {
         termEndDateTs,
       );
 
-      const { enableDecentHatsModuleData, disableDecentHatsModuleData } =
-        getEnableDisableDecentHatsModuleData(decentHatsModificationModule);
+      const { enableDAOHatsModuleData, disableDAOHatsModuleData } =
+        getEnableDisableDAOHatsModuleData(daoHatsModificationModule);
 
       const createNewRoleData = encodeFunctionData({
-        abi: legacy.abis.DecentHatsModificationModule,
+        abi: legacy.abis.DAOHatsModificationModule,
         functionName: 'createRoleHats',
         args: [
           {
@@ -787,15 +787,15 @@ export default function useCreateRoles() {
       return [
         {
           targetAddress: safeAddress,
-          calldata: enableDecentHatsModuleData,
+          calldata: enableDAOHatsModuleData,
         },
         {
-          targetAddress: decentHatsModificationModule,
+          targetAddress: daoHatsModificationModule,
           calldata: createNewRoleData,
         },
         {
           targetAddress: safeAddress,
-          calldata: disableDecentHatsModuleData,
+          calldata: disableDAOHatsModuleData,
         },
       ];
     },
@@ -805,8 +805,8 @@ export default function useCreateRoles() {
       parseRoleTermsFromFormRoleTerms,
       parseSablierPaymentsFromFormRolePayments,
       createHatStructWithPayments,
-      getEnableDisableDecentHatsModuleData,
-      decentHatsModificationModule,
+      getEnableDisableDAOHatsModuleData,
+      daoHatsModificationModule,
       hatsProtocol,
       erc6551Registry,
       hatsAccount1ofNMasterCopy,
@@ -815,15 +815,15 @@ export default function useCreateRoles() {
     ],
   );
 
-  const isDecentAutonomousAdminV1 = useCallback(
+  const isDAOAutonomousAdminV1 = useCallback(
     async (address: Address) => {
-      const decentAutonomousAdminV1Contract = getContract({
+      const daoAutonomousAdminV1Contract = getContract({
         address: address,
-        abi: legacy.abis.DecentAutonomousAdminV1,
+        abi: legacy.abis.DAOAutonomousAdminV1,
         client: publicClient,
       });
       const DECENT_AUTONOMOUS_ADMIN_V1_INTERFACE_ID = '0x0ac4a8e8';
-      return decentAutonomousAdminV1Contract.read.supportsInterface([
+      return daoAutonomousAdminV1Contract.read.supportsInterface([
         DECENT_AUTONOMOUS_ADMIN_V1_INTERFACE_ID,
       ]);
     },
@@ -831,10 +831,10 @@ export default function useCreateRoles() {
   );
 
   /**
-   * @dev Checks if Admin Hat is already being worn by an instance of DecentAutonomousAdminV1
-   * @dev if not, prepares transactions to deploy a new instance of DecentAutonomousAdminV1
+   * @dev Checks if Admin Hat is already being worn by an instance of DAOAutonomousAdminV1
+   * @dev if not, prepares transactions to deploy a new instance of DAOAutonomousAdminV1
    * @dev and mint a new hat
-   * @returns an array of transactions to create a deploy Decent Autonomous Admin and mint a new hat
+   * @returns an array of transactions to create a deploy DAO Autonomous Admin and mint a new hat
    */
   const prepareAdminHatTxs = useCallback(
     async (
@@ -846,34 +846,34 @@ export default function useCreateRoles() {
         return [];
       }
 
-      if (!!adminHatWearerAddress && (await isDecentAutonomousAdminV1(adminHatWearerAddress))) {
+      if (!!adminHatWearerAddress && (await isDAOAutonomousAdminV1(adminHatWearerAddress))) {
         return [];
       }
 
-      // deploy new instance of DecentAutonomousAdminV1 through ModuleProxyFactory
+      // deploy new instance of DAOAutonomousAdminV1 through ModuleProxyFactory
       const salt = keccak256(
         encodePacked(
           ['bytes32', 'uint256'],
           [keccak256(encodePacked(['bytes'], [ERC6551_REGISTRY_SALT])), BigInt(adminHatId)],
         ),
       );
-      const deployDecentAutonomousAdminV1Calldata = encodeFunctionData({
+      const deployDAOAutonomousAdminV1Calldata = encodeFunctionData({
         abi: ZodiacModuleProxyFactoryAbi,
         functionName: 'deployModule',
         args: [
-          decentAutonomousAdminV1MasterCopy,
+          daoAutonomousAdminV1MasterCopy,
           encodeFunctionData({
-            abi: legacy.abis.DecentAutonomousAdminV1,
+            abi: legacy.abis.DAOAutonomousAdminV1,
             functionName: 'setUp',
             args: [zeroAddress],
           }),
           BigInt(salt),
         ],
       });
-      const predictedDecentAutonomousAdminV1Address = getCreate2Address({
+      const predictedDAOAutonomousAdminV1Address = getCreate2Address({
         from: zodiacModuleProxyFactory,
         salt: salt,
-        bytecodeHash: keccak256(encodePacked(['bytes'], [deployDecentAutonomousAdminV1Calldata])),
+        bytecodeHash: keccak256(encodePacked(['bytes'], [deployDAOAutonomousAdminV1Calldata])),
       });
 
       // @todo max supply check and increase if maxed
@@ -882,21 +882,21 @@ export default function useCreateRoles() {
         calldata: encodeFunctionData({
           abi: HatsAbi,
           functionName: 'mintHat',
-          args: [BigInt(adminHatId), predictedDecentAutonomousAdminV1Address],
+          args: [BigInt(adminHatId), predictedDAOAutonomousAdminV1Address],
         }),
       };
-      const deployDecentAutonomousAdminV1Tx = {
+      const deployDAOAutonomousAdminV1Tx = {
         targetAddress: zodiacModuleProxyFactory,
-        calldata: deployDecentAutonomousAdminV1Calldata,
+        calldata: deployDAOAutonomousAdminV1Calldata,
       };
 
-      return [deployDecentAutonomousAdminV1Tx, mintAdminHat];
+      return [deployDAOAutonomousAdminV1Tx, mintAdminHat];
     },
     [
-      decentAutonomousAdminV1MasterCopy,
+      daoAutonomousAdminV1MasterCopy,
       hatsProtocol,
       zodiacModuleProxyFactory,
-      isDecentAutonomousAdminV1,
+      isDAOAutonomousAdminV1,
     ],
   );
 
@@ -1343,8 +1343,8 @@ export default function useCreateRoles() {
       // for each modified role
       //
       // New Role
-      //   - Transfer the top hat to the DecentHats module, so it can create new hats on the safe's behalf
-      //   - allTxs.push(createRoleHat). This will (in the DecentHats contract):
+      //   - Transfer the top hat to the DAOHats module, so it can create new hats on the safe's behalf
+      //   - allTxs.push(createRoleHat). This will (in the DAOHats contract):
       //     - create hat,
       //     - mint hat,
       //     - create smart account for the hat,
@@ -1588,10 +1588,10 @@ export default function useCreateRoles() {
 
             if (
               adminHatWearer === undefined ||
-              !(await isDecentAutonomousAdminV1(adminHatWearer))
+              !(await isDAOAutonomousAdminV1(adminHatWearer))
             ) {
               throw new Error(
-                'Cannot prepare transactions for edited role without decent auto admin hat wearer',
+                'Cannot prepare transactions for edited role without dao auto admin hat wearer',
               );
             }
 
@@ -1656,7 +1656,7 @@ export default function useCreateRoles() {
               ) {
                 allTxs.push({
                   calldata: encodeFunctionData({
-                    abi: legacy.abis.DecentAutonomousAdminV1,
+                    abi: legacy.abis.DAOAutonomousAdminV1,
                     functionName: 'triggerStartNextTerm',
                     args: [
                       {
@@ -1776,7 +1776,7 @@ export default function useCreateRoles() {
       getMemberChangedStreamsWithFundsToClaim,
       prepareRolePaymentUpdateTxs,
       prepareTermedRolePaymentUpdateTxs,
-      isDecentAutonomousAdminV1,
+      isDAOAutonomousAdminV1,
       hatsElectionsEligibilityMasterCopy,
       publicClient,
       parseRoleTermsFromFormRoleTerms,

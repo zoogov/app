@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -28,7 +28,7 @@ import { getAzoriusModuleFromModules } from '../../../utils';
 import useNetworkPublicClient from '../../useNetworkPublicClient';
 import { useNetworkWalletClient } from '../../useNetworkWalletClient';
 import useVotingStrategiesAddresses from '../../utils/useVotingStrategiesAddresses';
-import { useDecentModules } from '../loaders/useDecentModules';
+import { useDAOModules } from '../loaders/useDAOModules';
 import { useCurrentDAOKey } from '../useCurrentDAOKey';
 
 export type SubmitProposalFunction = ({
@@ -99,7 +99,7 @@ export default function useSubmitProposal({
     });
   }, [modules, walletClient]);
 
-  const lookupModules = useDecentModules();
+  const lookupModules = useDAOModules();
   const {
     chain,
     addressPrefix,
@@ -407,8 +407,8 @@ export default function useSubmitProposal({
         // Submitting proposal to any DAO out of global context
         const votingStrategies = await getVotingStrategies(safeAddress);
         const safeInfo = await safeAPI.getSafeInfo(safeAddress);
-        const decentModules = await lookupModules(safeInfo.modules);
-        const azoriusModule = getAzoriusModuleFromModules(decentModules);
+        const daoModules = await lookupModules(safeInfo.modules);
+        const azoriusModule = getAzoriusModuleFromModules(daoModules);
         if (!azoriusModule || !votingStrategies) {
           await submitMultisigProposal({
             proposalData,

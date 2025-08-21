@@ -8,7 +8,7 @@ import { useCanUserCreateProposal } from '../../../hooks/utils/useCanUserSubmitP
 import { useDAOStore } from '../../../providers/App/AppProvider';
 import { useNetworkConfigStore } from '../../../providers/NetworkConfig/useNetworkConfigStore';
 import { ModalType } from '../../ui/modals/ModalProvider';
-import { useDecentModal } from '../../ui/modals/useDecentModal';
+import { useDAOModal } from '../../ui/modals/useDecentModal';
 
 export default function useTreasuryLidoInteractions() {
   const { daoKey } = useCurrentDAOKey();
@@ -27,7 +27,7 @@ export default function useTreasuryLidoInteractions() {
     Object.keys(staking).length > 0 &&
     ethAsset &&
     BigInt(ethAsset.balance) > 0n;
-  const { open: openStakingModal } = useDecentModal(ModalType.STAKE);
+  const { open: openStakingModal } = useDAOModal(ModalType.STAKE);
 
   // --- Lido Unstake button setup ---
   const stETHAsset = assetsFungible.find(

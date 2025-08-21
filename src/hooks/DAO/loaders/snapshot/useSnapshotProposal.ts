@@ -13,7 +13,7 @@ import {
 import { logError } from '../../../../helpers/errorLogging';
 import { useDAOStore } from '../../../../providers/App/AppProvider';
 import {
-  DecentSnapshotVote,
+  DAOSnapshotVote,
   ExtendedSnapshotProposal,
   FractalProposal,
   FractalProposalState,
@@ -66,7 +66,7 @@ export default function useSnapshotProposal(proposal: FractalProposal | null | u
       }
 
       const votes = votesQueryResult.data.votes.map(
-        (vote: SnapshotVote): DecentSnapshotVote => ({
+        (vote: SnapshotVote): DAOSnapshotVote => ({
           id: vote.id,
           voter: vote.voter,
           votingWeight: vote.vp,
@@ -79,7 +79,7 @@ export default function useSnapshotProposal(proposal: FractalProposal | null | u
 
       const votesBreakdown: {
         [voteChoice: string]: {
-          votes: DecentSnapshotVote[];
+          votes: DAOSnapshotVote[];
           total: number;
         };
       } = {};
@@ -106,7 +106,7 @@ export default function useSnapshotProposal(proposal: FractalProposal | null | u
       const isClosed = snapshotProposal.state === FractalProposalState.CLOSED;
 
       if (!(isShielded && !isClosed)) {
-        votes.forEach((vote: DecentSnapshotVote) => {
+        votes.forEach((vote: DAOSnapshotVote) => {
           if (type === 'weighted') {
             const voteChoices = vote.choice as SnapshotWeightedVotingChoice;
             if (typeof voteChoices === 'number') {

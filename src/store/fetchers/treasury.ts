@@ -9,7 +9,7 @@ import useBalancesAPI from '../../providers/App/hooks/useBalancesAPI';
 import { useSafeAPI } from '../../providers/App/hooks/useSafeAPI';
 import { useNetworkConfigStore } from '../../providers/NetworkConfig/useNetworkConfigStore';
 import {
-  DecentTreasury,
+  DAOTreasury,
   TokenEventType,
   TransferDisplayData,
   TransferType,
@@ -82,7 +82,7 @@ export function useTreasuryFetcher() {
       onTransferLoaded,
     }: {
       safeAddress: Address;
-      onTreasuryLoaded: (treasuryData: DecentTreasury) => void;
+      onTreasuryLoaded: (treasuryData: DAOTreasury) => void;
       onTransfersLoaded: (transfers: TransferDisplayData[]) => void;
       onTransferLoaded: (transfer: TransferDisplayData) => void;
     }) => {

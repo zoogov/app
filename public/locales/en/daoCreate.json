@@ -56,7 +56,7 @@
   "labelAddAllocation": "Add Allocation",
   "labelAddProposer": "",
   "labelTokenName": "Name",
-  "helperTokenName": "Enter the name of your governance token, i.e. Decent.",
+  "helperTokenName": "Enter the name of your governance token, i.e. DAO.",
   "labelTokenSymbol": "Symbol",
   "helperTokenSymbol": "2-6 characters, i.e. DCNT, SAFE, USDC.",
   "labelTokenSupply": "Total Supply",

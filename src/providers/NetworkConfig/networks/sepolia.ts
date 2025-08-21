@@ -1,4 +1,4 @@
-import { legacy, addresses } from '@decentdao/decent-contracts';
+import { legacy, addresses } from '@luxdao/contracts';
 import {
   getCompatibilityFallbackHandlerDeployment,
   getMultiSendCallOnlyDeployment,
@@ -29,7 +29,7 @@ export const sepoliaConfig: NetworkConfig = {
   addressPrefix: 'sep',
   nativeTokenIcon: '/images/coin-icon-sep.svg',
   isENSSupported: true,
-  decentSubgraph: {
+  daoSubgraph: {
     space: 71032,
     slug: 'fractal-sepolia',
     id: 'GNsEo1grZ1dUyyPbPnAutkDtx51t1XN8DhgMHThgo7b2',
@@ -97,12 +97,12 @@ export const sepoliaConfig: NetworkConfig = {
 
     claimErc20MasterCopy: getAddressFromContractDeploymentInfo(a.ERC20Claim),
 
-    decentAutonomousAdminV1MasterCopy: getAddressFromContractDeploymentInfo(
-      a.DecentAutonomousAdminV1,
+    daoAutonomousAdminV1MasterCopy: getAddressFromContractDeploymentInfo(
+      a.DAOAutonomousAdminV1,
     ),
 
     paymaster: {
-      decentPaymasterV1MasterCopy: getAddressFromContractDeploymentInfo(a.DecentPaymasterV1),
+      daoPaymasterV1MasterCopy: getAddressFromContractDeploymentInfo(a.DAOPaymasterV1),
       linearERC20VotingV1ValidatorV1: getAddressFromContractDeploymentInfo(
         a.LinearERC20VotingV1ValidatorV1,
       ),
@@ -113,12 +113,12 @@ export const sepoliaConfig: NetworkConfig = {
 
     keyValuePairs: getAddressFromContractDeploymentInfo(a.KeyValuePairs),
 
-    decentHatsCreationModule: getAddressFromContractDeploymentInfo(a.DecentHatsCreationModule),
-    decentHatsModificationModule: getAddressFromContractDeploymentInfo(
-      a.DecentHatsModificationModule,
+    daoHatsCreationModule: getAddressFromContractDeploymentInfo(a.DAOHatsCreationModule),
+    daoHatsModificationModule: getAddressFromContractDeploymentInfo(
+      a.DAOHatsModificationModule,
     ),
-    decentSablierStreamManagementModule: getAddressFromContractDeploymentInfo(
-      a.DecentSablierStreamManagementModule,
+    daoSablierStreamManagementModule: getAddressFromContractDeploymentInfo(
+      a.DAOSablierStreamManagementModule,
     ),
 
     hatsProtocol: '0x3bc1A0Ad72417f2d411118085256fC53CBdDd137',

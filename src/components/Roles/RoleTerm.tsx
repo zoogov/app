@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Icon, Text } from '@chakra-ui/react';
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { ArrowRight, Calendar, ClockCountdown, Copy } from '@phosphor-icons/react';
 import { format } from 'date-fns';
 import { useCallback, useMemo } from 'react';
@@ -309,7 +309,7 @@ export default function RoleTerm({
       throw new Error('Current hat must be worn by a member');
     }
     if (adminHatWearer === undefined) {
-      throw new Error('Admin hat must be worn by Decent Autonomous Admin');
+      throw new Error('Admin hat must be worn by DAO Autonomous Admin');
     }
     if (!walletClient) {
       throw new Error('Public client not found');
@@ -324,12 +324,12 @@ export default function RoleTerm({
 
     contractCall({
       contractFn: () => {
-        const decentAutonomousAdminContract = getContract({
-          abi: legacy.abis.DecentAutonomousAdminV1,
+        const daoAutonomousAdminContract = getContract({
+          abi: legacy.abis.DAOAutonomousAdminV1,
           address: adminHatWearer,
           client: walletClient,
         });
-        return decentAutonomousAdminContract.write.triggerStartNextTerm([
+        return daoAutonomousAdminContract.write.triggerStartNextTerm([
           {
             currentWearer: wearerAddress,
             hatsProtocol,

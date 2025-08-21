@@ -10,7 +10,7 @@
   "refillTank": "Nachfüllen Paymaster",
   "refillPaymasterAction": "Paymaster mit {{amount}} auffüllen {{symbol}}",
   "starterPromoTitle": "STARTER PROMO",
-  "starterPromoDescription": "Treten Sie unserem Telegramm bei und wenden Sie sich an unser Team, um zu erfahren, wie Sie Ihre Netzwerkgebühren von Decent übernehmen lassen können:",
+  "starterPromoDescription": "Treten Sie unserem Telegramm bei und wenden Sie sich an unser Team, um zu erfahren, wie Sie Ihre Netzwerkgebühren von DAO übernehmen lassen können:",
   "paymasterBalance": "Zahlmeister Saldo",
   "paymasterStakedAmount": "Zahlmeister Eingesetzter Betrag",
   "submitRefillAmount": "Jetzt senden",

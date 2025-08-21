@@ -56,7 +56,7 @@
   "labelAddAllocation": "Zuweisung hinzufügen",
   "labelAddProposer": "",
   "labelTokenName": "Name",
-  "helperTokenName": "Geben Sie den Namen Ihres Governance-Tokens ein, z. B. \"Decent\".",
+  "helperTokenName": "Geben Sie den Namen Ihres Governance-Tokens ein, z. B. \"DAO\".",
   "labelTokenSymbol": "Symbol",
   "helperTokenSymbol": "2-6 Zeichen, d.h. DCNT, SAFE, USDC.",
   "labelTokenSupply": "Gesamtangebot",

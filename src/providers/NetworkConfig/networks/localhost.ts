@@ -1,4 +1,4 @@
-import { legacy, addresses } from '@decentdao/decent-contracts';
+import { legacy, addresses } from '@luxdao/contracts';
 import {
   getCompatibilityFallbackHandlerDeployment,
   getMultiSendCallOnlyDeployment,
@@ -39,8 +39,8 @@ const localhost: Chain = {
 };
 
 const chain = localhost;
-// Use mainnet addresses as fallback for local development
-const a = legacy.addresses[1] || {};
+// Use localhost addresses for local development
+const a = legacy.addresses?.localhost || addresses?.localhost || {};
 
 export const localhostConfig: NetworkConfig = {
   order: 100,
@@ -52,7 +52,7 @@ export const localhostConfig: NetworkConfig = {
   addressPrefix: 'local',
   nativeTokenIcon: '/images/coin-icon-eth.svg',
   isENSSupported: false,
-  decentSubgraph: {
+  daoSubgraph: {
     space: 0,
     slug: 'local',
     id: 'local',
@@ -72,58 +72,58 @@ export const localhostConfig: NetworkConfig = {
     zodiacModuleProxyFactory: '0x000000000000aDdB49795b0f9bA5BC298cDda236',
 
     // Use mainnet addresses as placeholders - these would need to be deployed locally
-    linearVotingErc20MasterCopy: getAddressFromContractDeploymentInfo(a.LinearERC20Voting) || '0x0000000000000000000000000000000000000000',
-    linearVotingErc20HatsWhitelistingMasterCopy: getAddressFromContractDeploymentInfo(
+    linearVotingErc20MasterCopy: a.LinearERC20Voting ? getAddressFromContractDeploymentInfo(a.LinearERC20Voting) : '0x0000000000000000000000000000000000000000',
+    linearVotingErc20HatsWhitelistingMasterCopy: a.LinearERC20VotingWithHatsProposalCreation ? getAddressFromContractDeploymentInfo(
       a.LinearERC20VotingWithHatsProposalCreation,
-    ) || '0x0000000000000000000000000000000000000000',
-    linearVotingErc721MasterCopy: getAddressFromContractDeploymentInfo(a.LinearERC721Voting) || '0x0000000000000000000000000000000000000000',
-    linearVotingErc721HatsWhitelistingMasterCopy: getAddressFromContractDeploymentInfo(
+    ) : '0x0000000000000000000000000000000000000000',
+    linearVotingErc721MasterCopy: a.LinearERC721Voting ? getAddressFromContractDeploymentInfo(a.LinearERC721Voting) : '0x0000000000000000000000000000000000000000',
+    linearVotingErc721HatsWhitelistingMasterCopy: a.LinearERC721VotingWithHatsProposalCreation ? getAddressFromContractDeploymentInfo(
       a.LinearERC721VotingWithHatsProposalCreation,
-    ) || '0x0000000000000000000000000000000000000000',
+    ) : '0x0000000000000000000000000000000000000000',
 
-    linearVotingErc20V1MasterCopy: getAddressFromContractDeploymentInfo(a.LinearERC20VotingV1) || '0x0000000000000000000000000000000000000000',
-    linearVotingErc20HatsWhitelistingV1MasterCopy: getAddressFromContractDeploymentInfo(
+    linearVotingErc20V1MasterCopy: a.LinearERC20VotingV1 ? getAddressFromContractDeploymentInfo(a.LinearERC20VotingV1) : '0x0000000000000000000000000000000000000000',
+    linearVotingErc20HatsWhitelistingV1MasterCopy: a.LinearERC20VotingWithHatsProposalCreationV1 ? getAddressFromContractDeploymentInfo(
       a.LinearERC20VotingWithHatsProposalCreationV1,
-    ) || '0x0000000000000000000000000000000000000000',
-    linearVotingErc721V1MasterCopy: getAddressFromContractDeploymentInfo(a.LinearERC721VotingV1) || '0x0000000000000000000000000000000000000000',
-    linearVotingErc721HatsWhitelistingV1MasterCopy: getAddressFromContractDeploymentInfo(
+    ) : '0x0000000000000000000000000000000000000000',
+    linearVotingErc721V1MasterCopy: a.LinearERC721VotingV1 ? getAddressFromContractDeploymentInfo(a.LinearERC721VotingV1) : '0x0000000000000000000000000000000000000000',
+    linearVotingErc721HatsWhitelistingV1MasterCopy: a.LinearERC721VotingWithHatsProposalCreationV1 ? getAddressFromContractDeploymentInfo(
       a.LinearERC721VotingWithHatsProposalCreationV1,
-    ) || '0x0000000000000000000000000000000000000000',
+    ) : '0x0000000000000000000000000000000000000000',
 
-    moduleAzoriusMasterCopy: getAddressFromContractDeploymentInfo(a.Azorius) || '0x0000000000000000000000000000000000000000',
-    moduleFractalMasterCopy: getAddressFromContractDeploymentInfo(a.FractalModule) || '0x0000000000000000000000000000000000000000',
+    moduleAzoriusMasterCopy: a.Azorius ? getAddressFromContractDeploymentInfo(a.Azorius) : '0x0000000000000000000000000000000000000000',
+    moduleFractalMasterCopy: a.FractalModule ? getAddressFromContractDeploymentInfo(a.FractalModule) : '0x0000000000000000000000000000000000000000',
 
-    freezeGuardAzoriusMasterCopy: getAddressFromContractDeploymentInfo(a.AzoriusFreezeGuard) || '0x0000000000000000000000000000000000000000',
-    freezeGuardMultisigMasterCopy: getAddressFromContractDeploymentInfo(a.MultisigFreezeGuard) || '0x0000000000000000000000000000000000000000',
+    freezeGuardAzoriusMasterCopy: a.AzoriusFreezeGuard ? getAddressFromContractDeploymentInfo(a.AzoriusFreezeGuard) : '0x0000000000000000000000000000000000000000',
+    freezeGuardMultisigMasterCopy: a.MultisigFreezeGuard ? getAddressFromContractDeploymentInfo(a.MultisigFreezeGuard) : '0x0000000000000000000000000000000000000000',
 
-    freezeVotingErc20MasterCopy: getAddressFromContractDeploymentInfo(a.ERC20FreezeVoting) || '0x0000000000000000000000000000000000000000',
-    freezeVotingErc721MasterCopy: getAddressFromContractDeploymentInfo(a.ERC721FreezeVoting) || '0x0000000000000000000000000000000000000000',
-    freezeVotingMultisigMasterCopy: getAddressFromContractDeploymentInfo(a.MultisigFreezeVoting) || '0x0000000000000000000000000000000000000000',
+    freezeVotingErc20MasterCopy: a.ERC20FreezeVoting ? getAddressFromContractDeploymentInfo(a.ERC20FreezeVoting) : '0x0000000000000000000000000000000000000000',
+    freezeVotingErc721MasterCopy: a.ERC721FreezeVoting ? getAddressFromContractDeploymentInfo(a.ERC721FreezeVoting) : '0x0000000000000000000000000000000000000000',
+    freezeVotingMultisigMasterCopy: a.MultisigFreezeVoting ? getAddressFromContractDeploymentInfo(a.MultisigFreezeVoting) : '0x0000000000000000000000000000000000000000',
 
-    votesErc20MasterCopy: getAddressFromContractDeploymentInfo(a.VotesERC20) || '0x0000000000000000000000000000000000000000',
+    votesErc20MasterCopy: a.VotesERC20 ? getAddressFromContractDeploymentInfo(a.VotesERC20) : '0x0000000000000000000000000000000000000000',
     votesErc20LockableMasterCopy: '0x0000000000000000000000000000000000000000',
     votesERC20StakedV1MasterCopy: '0x0000000000000000000000000000000000000000',
 
-    claimErc20MasterCopy: getAddressFromContractDeploymentInfo(a.ERC20Claim) || '0x0000000000000000000000000000000000000000',
+    claimErc20MasterCopy: a.ERC20Claim ? getAddressFromContractDeploymentInfo(a.ERC20Claim) : '0x0000000000000000000000000000000000000000',
 
-    decentAutonomousAdminV1MasterCopy: getAddressFromContractDeploymentInfo(
-      a.DecentAutonomousAdminV1,
-    ) || '0x0000000000000000000000000000000000000000',
+    daoAutonomousAdminV1MasterCopy: a.DAOAutonomousAdminV1 ? getAddressFromContractDeploymentInfo(
+      a.DAOAutonomousAdminV1,
+    ) : '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
 
     paymaster: {
-      decentPaymasterV1MasterCopy: '0x0000000000000000000000000000000000000000',
+      daoPaymasterV1MasterCopy: '0x0000000000000000000000000000000000000000',
       linearERC20VotingV1ValidatorV1: '0x0000000000000000000000000000000000000000',
       linearERC721VotingV1ValidatorV1: '0x0000000000000000000000000000000000000000',
     },
 
-    keyValuePairs: '0x0000000000000000000000000000000000000000',
+    keyValuePairs: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
 
-    decentHatsCreationModule: '0x0000000000000000000000000000000000000000',
-    decentHatsModificationModule: '0x0000000000000000000000000000000000000000',
-    decentSablierStreamManagementModule: '0x0000000000000000000000000000000000000000',
+    daoHatsCreationModule: '0x0000000000000000000000000000000000000000',
+    daoHatsModificationModule: '0x0000000000000000000000000000000000000000',
+    daoSablierStreamManagementModule: '0x0000000000000000000000000000000000000000',
 
-    hatsProtocol: '0x0000000000000000000000000000000000000000',
-    erc6551Registry: '0x0000000000000000000000000000000000000000',
+    hatsProtocol: '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9',
+    erc6551Registry: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
     hatsAccount1ofNMasterCopy: '0x0000000000000000000000000000000000000000',
     hatsElectionsEligibilityMasterCopy: '0x0000000000000000000000000000000000000000',
     sablierV2Batch: '0x0000000000000000000000000000000000000000',

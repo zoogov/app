@@ -6,7 +6,7 @@ import { SendAssetsData } from '../utils/dao/prepareSendAssetsActionData';
 import { BigIntValuePair } from './common';
 import { CreateProposalMetadata } from './proposalBuilder';
 
-interface DecentHat {
+interface DAOHat {
   id: Hex;
   prettyId: string;
   name: string;
@@ -14,9 +14,9 @@ interface DecentHat {
   smartAddress: Address;
 }
 
-export interface DecentTopHat extends DecentHat {}
+export interface DAOTopHat extends DAOHat {}
 
-export interface DecentAdminHat extends DecentHat {
+export interface DAOAdminHat extends DAOHat {
   wearer?: Address;
 }
 
@@ -26,27 +26,27 @@ type RoleTerm = {
   termNumber: number;
 };
 
-export type DecentRoleHatTerms = {
+export type DAORoleHatTerms = {
   allTerms: RoleTerm[];
   currentTerm: (RoleTerm & { isActive: boolean | undefined }) | undefined;
   nextTerm: RoleTerm | undefined;
   expiredTerms: RoleTerm[];
 };
 
-export interface DecentRoleHat extends Omit<DecentHat, 'smartAddress'> {
+export interface DAORoleHat extends Omit<DAOHat, 'smartAddress'> {
   wearerAddress: Address;
   smartAddress?: Address;
-  roleTerms: DecentRoleHatTerms;
+  roleTerms: DAORoleHatTerms;
   canCreateProposals: boolean;
   payments: SablierPayment[];
   isTermed: boolean;
   eligibility?: Address;
 }
 
-export interface DecentTree {
-  topHat: DecentTopHat;
-  adminHat: DecentAdminHat;
-  roleHats: DecentRoleHat[];
+export interface DAOTree {
+  topHat: DAOTopHat;
+  adminHat: DAOAdminHat;
+  roleHats: DAORoleHat[];
 }
 
 export interface SablierPayment {
@@ -99,7 +99,7 @@ export interface RoleEditProps
 }
 
 export interface RoleDetailsDrawerRoleHatProp
-  extends Omit<DecentRoleHat, 'payments' | 'smartAddress'> {
+  extends Omit<DAORoleHat, 'payments' | 'smartAddress'> {
   smartAddress?: Address;
   payments?: (Omit<SablierPayment, 'contractAddress' | 'streamId'> & {
     contractAddress?: Address;
@@ -178,7 +178,7 @@ export interface EditedRole {
 }
 
 export interface RoleHatFormValue
-  extends Partial<Omit<DecentRoleHat, 'id' | 'wearerAddress' | 'payments' | 'roleTerms'>> {
+  extends Partial<Omit<DAORoleHat, 'id' | 'wearerAddress' | 'payments' | 'roleTerms'>> {
   id: Hex;
   // The user-input field that could either be an address or an ENS name.
   wearer?: string;
@@ -235,13 +235,13 @@ export interface RoleDetailsDrawerProps {
 
 export interface RolesStoreData {
   hatsTreeId: undefined | null | StoreSlice<number>;
-  hatsTree: undefined | null | DecentTree;
+  hatsTree: undefined | null | DAOTree;
   streamsFetched: boolean;
   contextChainId: number | null;
 }
 
 export interface RolesStore extends RolesStoreData {
-  getHat: (hatId: Hex) => DecentRoleHat | null;
+  getHat: (hatId: Hex) => DAORoleHat | null;
   getPayment: (hatId: Hex, streamId: string) => SablierPayment | null;
   setHatKeyValuePairData: (args: {
     daoKey: string;

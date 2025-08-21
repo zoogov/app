@@ -8,10 +8,10 @@ import { walletConnectProjectId } from '../../../providers/NetworkConfig/web3-mo
 import { TransactionWithId } from '../types';
 
 const WCMetadata = {
-  name: 'Decent DAO',
+  name: 'DAO DAO',
   description: 'Govern at startup speed.',
-  url: 'decentdao.org',
-  icons: ['https://decentdao.org/favicon.ico'],
+  url: 'luxdao.org',
+  icons: ['https://luxdao.org/favicon.ico'],
 };
 
 const core = new Core({

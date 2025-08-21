@@ -56,7 +56,7 @@
   "labelAddAllocation": "新增分配",
   "labelAddProposer": "",
   "labelTokenName": "名稱",
-  "helperTokenName": "輸入管理代碼的名稱，例如Decent。",
+  "helperTokenName": "輸入管理代碼的名稱，例如DAO。",
   "labelTokenSymbol": "符號",
   "helperTokenSymbol": "2-6個字元，即DCNT、SAFE、USDC。",
   "labelTokenSupply": "總供應量",

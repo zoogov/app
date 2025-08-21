@@ -60,8 +60,8 @@ async function translateWithPlaceholders(text, langCode) {
     translatedText = translatedText.replace(placeholder, `<xx>${placeholder}</xx>`);
   });
 
-  // Replace "Decent Labs" with temporary markers
-  translatedText = translatedText.replace('Decent Labs', '<xx>Decent Labs</xx>');
+  // Replace "DAO Labs" with temporary markers
+  translatedText = translatedText.replace('DAO Labs', '<xx>DAO Labs</xx>');
 
   // Translate the text without placeholders
   try {

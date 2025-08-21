@@ -1,7 +1,7 @@
 import { ComponentWithAs, createIcon, IconProps } from '@chakra-ui/react';
 
-export const DecentHourGlass: ComponentWithAs<'svg', IconProps> = createIcon({
-  displayName: 'DecentHourGlass',
+export const DAOHourGlass: ComponentWithAs<'svg', IconProps> = createIcon({
+  displayName: 'DAOHourGlass',
   viewBox: '0 0 46 68',
   path: (
     <svg

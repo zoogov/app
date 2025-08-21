@@ -56,7 +56,7 @@
   "labelAddAllocation": "할당 추가",
   "labelAddProposer": "",
   "labelTokenName": "이름",
-  "helperTokenName": "거버넌스 토큰의 이름(예: Decent)을 입력합니다.",
+  "helperTokenName": "거버넌스 토큰의 이름(예: DAO)을 입력합니다.",
   "labelTokenSymbol": "기호",
   "helperTokenSymbol": "2~6자(예: DCNT, SAFE, USDC).",
   "labelTokenSupply": "총 공급량",

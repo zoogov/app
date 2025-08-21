@@ -15,7 +15,7 @@ import { useNetworkConfigStore } from '../../providers/NetworkConfig/useNetworkC
 import { formatCoin } from '../../utils';
 import { ModalType } from '../ui/modals/ModalProvider';
 import { SafeSettingsEdits, SafeSettingsFormikErrors } from '../ui/modals/SafeSettingsModal';
-import { useDecentModal } from '../ui/modals/useDecentModal';
+import { useDAOModal } from '../ui/modals/useDecentModal';
 import Divider from '../ui/utils/Divider';
 
 interface GaslessVotingToggleProps {
@@ -193,8 +193,8 @@ export function GaslessVotingToggleDAOSettings(props: GaslessVotingToggleProps) 
   } = useDAOStore({ daoKey });
   const { depositInfo } = usePaymasterDepositInfo();
 
-  const { open: openWithdrawGasModal } = useDecentModal(ModalType.WITHDRAW_GAS);
-  const { open: openRefillGasModal } = useDecentModal(ModalType.REFILL_GAS);
+  const { open: openWithdrawGasModal } = useDAOModal(ModalType.WITHDRAW_GAS);
+  const { open: openRefillGasModal } = useDAOModal(ModalType.REFILL_GAS);
 
   const gaslessFeatureEnabled = useFeatureFlag('flag_gasless_voting');
   const gaslessStakingEnabled = gaslessFeatureEnabled && bundlerMinimumStake !== undefined;

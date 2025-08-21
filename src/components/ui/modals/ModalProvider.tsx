@@ -39,8 +39,8 @@ export enum ModalType {
   DELEGATE,
   STAKE,
   CONFIRM_URL,
-  REMOVE_SIGNER, // @TODO: remove this modal (https://linear.app/decent-labs/issue/ENG-1150/remove-add-remove-signer-modals)
-  ADD_SIGNER, // @TODO: remove this modal (https://linear.app/decent-labs/issue/ENG-1150/remove-add-remove-signer-modals)
+  REMOVE_SIGNER, // @TODO: remove this modal (https://linear.app/hanzoai/issue/ENG-1150/remove-add-remove-signer-modals)
+  ADD_SIGNER, // @TODO: remove this modal (https://linear.app/hanzoai/issue/ENG-1150/remove-add-remove-signer-modals)
   ADD_PERMISSION,
   ADD_CREATE_PROPOSAL_PERMISSION,
   CREATE_PROPOSAL_FROM_TEMPLATE,
@@ -574,7 +574,7 @@ function ModalDisplay({
  *  1. Create the modal content as a component, excluding the title of the modal (see e.g. DelegateModal).
  *  2. Add the modal to the ModalType enum.
  *  3. Handle assigning your new modal component for that ModalType here in the provider switch case.
- *  4. Utilize the useDecentModal hook to get a click listener to open your new modal.
+ *  4. Utilize the useDAOModal hook to get a click listener to open your new modal.
  */
 export function ModalProvider({
   children,

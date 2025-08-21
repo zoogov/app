@@ -1,16 +1,16 @@
 import { StateCreator } from 'zustand';
-import { DAOKey, DecentTreasury, TransferDisplayData } from '../../types';
+import { DAOKey, DAOTreasury, TransferDisplayData } from '../../types';
 import { GlobalStore, StoreMiddleware, StoreSlice } from '../store';
 
 export type TreasuriesSlice = {
-  treasuries: StoreSlice<DecentTreasury>;
-  setTreasury: (daoKey: DAOKey, treasury: DecentTreasury) => void;
-  getTreasury: (daoKey: DAOKey) => DecentTreasury;
+  treasuries: StoreSlice<DAOTreasury>;
+  setTreasury: (daoKey: DAOKey, treasury: DAOTreasury) => void;
+  getTreasury: (daoKey: DAOKey) => DAOTreasury;
   setTransfers: (daoKey: DAOKey, transfers: TransferDisplayData[]) => void;
   setTransfer: (daoKey: DAOKey, transfer: TransferDisplayData) => void;
 };
 
-const EMPTY_TREASURY: DecentTreasury = {
+const EMPTY_TREASURY: DAOTreasury = {
   totalUsdValue: 0,
   assetsFungible: [],
   assetsNonFungible: [],

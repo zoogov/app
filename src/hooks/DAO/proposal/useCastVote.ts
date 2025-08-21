@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { toLightSmartAccount } from 'permissionless/accounts';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +7,7 @@ import { Address, getContract, http } from 'viem';
 import { createBundlerClient } from 'viem/account-abstraction';
 import { EntryPoint07Abi } from '../../../assets/abi/EntryPoint07Abi';
 import { ModalType } from '../../../components/ui/modals/ModalProvider';
-import { useDecentModal } from '../../../components/ui/modals/useDecentModal';
+import { useDAOModal } from '../../../components/ui/modals/useDecentModal';
 import useFeatureFlag from '../../../helpers/environmentFeatureFlags';
 import { useDAOStore } from '../../../providers/App/AppProvider';
 import { useNetworkConfigStore } from '../../../providers/NetworkConfig/useNetworkConfigStore';
@@ -177,7 +177,7 @@ const useCastVote = (proposalId: string, strategy: Address) => {
       // DO NOT CHANGE THIS INDEX!!!
       // For context, see:
       // - https://docs.pimlico.io/permissionless/reference/accounts/toLightSmartAccount#index-optional
-      // - https://github.com/decentdao/decent-contracts/blob/a2fad6470015c0f59c84d8b5249dd1ee7b8a4773/contracts/account-abstraction/SmartAccountValidationV1.sol#L47
+      // - https://github.com/luxdao/contracts/blob/a2fad6470015c0f59c84d8b5249dd1ee7b8a4773/contracts/account-abstraction/SmartAccountValidationV1.sol#L47
       index: 0n,
     });
     const bundlerClient = createBundlerClient({
@@ -276,7 +276,7 @@ const useCastVote = (proposalId: string, strategy: Address) => {
     publicClient,
   ]);
 
-  const { open: gaslessVoteLoadingModal, close: closeGaslessVoteLoadingModal } = useDecentModal(
+  const { open: gaslessVoteLoadingModal, close: closeGaslessVoteLoadingModal } = useDAOModal(
     ModalType.GASLESS_VOTE_LOADING,
   );
 

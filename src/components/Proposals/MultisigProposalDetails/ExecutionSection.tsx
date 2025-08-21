@@ -1,5 +1,5 @@
 import { Box, Button, Text } from '@chakra-ui/react';
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { SafeMultisigTransactionResponse } from '@safe-global/safe-core-sdk-types';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +17,7 @@ import { FractalProposalState, MultisigProposal } from '../../../types';
 import { DecentTooltip } from '../../ui/DecentTooltip';
 import { SectionContentBox } from '../../ui/containers/ContentBox';
 import { ModalType } from '../../ui/modals/ModalProvider';
-import { useDecentModal } from '../../ui/modals/useDecentModal';
+import { useDAOModal } from '../../ui/modals/useDecentModal';
 
 function useProposalExecutionButtonAction(
   state: FractalProposalState | null | undefined,
@@ -182,7 +182,7 @@ function useProposalExecutionButtonAction(
     }
   };
 
-  const { open: openExecutionConfirmModal } = useDecentModal(ModalType.CONFIRM_EXECUTION, {
+  const { open: openExecutionConfirmModal } = useDAOModal(ModalType.CONFIRM_EXECUTION, {
     nonce: proposalNonce,
     submitExecution: () =>
       executeMultisigProposal({

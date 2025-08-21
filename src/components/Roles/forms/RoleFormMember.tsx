@@ -20,7 +20,7 @@ import {
 import { Field, FieldInputProps, FieldMetaProps, FormikProps, useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { DecentHourGlass } from '../../../assets/theme/custom/icons/DecentHourGlass';
+import { DAOHourGlass } from '../../../assets/theme/custom/icons/DAOHourGlass';
 import { DETAILS_BOX_SHADOW } from '../../../constants/common';
 import useAddress from '../../../hooks/utils/useAddress';
 import { RoleFormValues } from '../../../types/roles';
@@ -93,7 +93,7 @@ function RoleMemberConfirmationScreen({
         px={8}
         maxW="28 rem"
       >
-        <DecentHourGlass
+        <DAOHourGlass
           h="4.2112rem"
           w="auto"
         />

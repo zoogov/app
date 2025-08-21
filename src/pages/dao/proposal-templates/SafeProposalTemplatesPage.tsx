@@ -11,7 +11,7 @@ import ProposalTemplateCard from '../../../components/ProposalTemplates/Proposal
 import NoDataCard from '../../../components/ui/containers/NoDataCard';
 import { InfoBoxLoader } from '../../../components/ui/loaders/InfoBoxLoader';
 import { ModalType } from '../../../components/ui/modals/ModalProvider';
-import { useDecentModal } from '../../../components/ui/modals/useDecentModal';
+import { useDAOModal } from '../../../components/ui/modals/useDecentModal';
 import PageHeader from '../../../components/ui/page/Header/PageHeader';
 import Divider from '../../../components/ui/utils/Divider';
 import { ROLES } from '../../../constants/accessControlRoles';
@@ -129,7 +129,7 @@ export function SafeProposalTemplatesPage() {
     [addAction, addressPrefix, disperse, loadTokenState, navigate, resetActions, safeAddress],
   );
 
-  const { open: openAirdropModal } = useDecentModal(ModalType.AIRDROP, {
+  const { open: openAirdropModal } = useDAOModal(ModalType.AIRDROP, {
     onSubmit: handleAirdropSubmit,
     submitButtonText: tModals('submitProposal'),
   });

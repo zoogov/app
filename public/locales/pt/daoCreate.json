@@ -56,7 +56,7 @@
   "labelAddAllocation": "Adicionar afetação",
   "labelAddProposer": "",
   "labelTokenName": "Nome",
-  "helperTokenName": "Introduza o nome do seu token de governação, ou seja, Decente.",
+  "helperTokenName": "Introduza o nome do seu token de governação, ou seja, DAOe.",
   "labelTokenSymbol": "Símbolo",
   "helperTokenSymbol": "2-6 caracteres, ou seja, DCNT, SAFE, USDC.",
   "labelTokenSupply": "Fornecimento total",

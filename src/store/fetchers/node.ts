@@ -1,19 +1,19 @@
 import { useCallback } from 'react';
 import { Address, getAddress, isAddress } from 'viem';
-import { createDecentSubgraphClient } from '../../graphql';
+import { createDAOSubgraphClient } from '../../graphql';
 import { DAOQuery, DAOQueryResponse } from '../../graphql/DAOQueries';
-import { useDecentModules } from '../../hooks/DAO/loaders/useDecentModules';
+import { useDAOModules } from '../../hooks/DAO/loaders/useDAOModules';
 import { useSafeAPI } from '../../providers/App/hooks/useSafeAPI';
 import { useNetworkConfigStore } from '../../providers/NetworkConfig/useNetworkConfigStore';
 import { DAOSubgraph } from '../../types';
 
 /**
  * `useNodeFetcher` is used as an abstraction layer over logic of fetching DAO node data
- * For now it only loads data from Safe API and Decent Subgraph
+ * For now it only loads data from Safe API and DAO Subgraph
  * In the future it will be extended to support other sources of data
  */
 export function useNodeFetcher() {
-  const lookupModules = useDecentModules();
+  const lookupModules = useDAOModules();
   const safeApi = useSafeAPI();
   const { getConfigByChainId } = useNetworkConfigStore();
 
@@ -22,7 +22,7 @@ export function useNodeFetcher() {
       const safe = await safeApi.getSafeData(safeAddress);
       const modules = await lookupModules(safe.modules);
 
-      const client = createDecentSubgraphClient(getConfigByChainId(chainId));
+      const client = createDAOSubgraphClient(getConfigByChainId(chainId));
       const graphRawNodeData = await client.query<DAOQueryResponse>(DAOQuery, { safeAddress });
 
       if (graphRawNodeData.error) {

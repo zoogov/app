@@ -26,8 +26,8 @@ const createTheGraphClient = (config: TheGraphConfig) => {
   return client;
 };
 
-export const createDecentSubgraphClient = (networkConfig: NetworkConfig) => {
-  return createTheGraphClient(networkConfig.decentSubgraph);
+export const createDAOSubgraphClient = (networkConfig: NetworkConfig) => {
+  return createTheGraphClient(networkConfig.daoSubgraph);
 };
 
 export const createSablierSubgraphClient = (networkConfig: NetworkConfig) => {

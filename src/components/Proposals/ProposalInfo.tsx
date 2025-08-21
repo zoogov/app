@@ -19,7 +19,7 @@ import { ProposalStateBadge } from '../ui/badges/Badge';
 import { SignerThresholdBadge } from '../ui/badges/SignerThresholdBadge';
 import { SnapshotButton } from '../ui/badges/Snapshot';
 import { ModalType } from '../ui/modals/ModalProvider';
-import { useDecentModal } from '../ui/modals/useDecentModal';
+import { useDAOModal } from '../ui/modals/useDecentModal';
 import { ProposalCountdown } from '../ui/proposal/ProposalCountdown';
 import ProposalExecutableCode from '../ui/proposal/ProposalExecutableCode';
 import CeleryButtonWithIcon from '../ui/utils/CeleryButtonWithIcon';
@@ -59,7 +59,7 @@ export function ProposalInfo({
   } = useDAOStore({ daoKey });
   const { snapshotProposal } = useSnapshotProposal(proposal);
 
-  const { open: confirmUrl } = useDecentModal(ModalType.CONFIRM_URL, {
+  const { open: confirmUrl } = useDAOModal(ModalType.CONFIRM_URL, {
     url: metaData.documentationUrl,
   });
 

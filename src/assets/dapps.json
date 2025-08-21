@@ -4,7 +4,7 @@
     "url": "https://swap.cow.fi",
     "name": "CoW Swap",
     "iconUrl": "https://safe-transaction-assets.safe.global/safe_apps/e0ecb7c3-93c1-4598-b9ee-c24d6a798b40/icon.png",
-    "description": "CoW Swap finds the lowest prices from all decentralized exchanges and DEX aggregators & saves you more with p2p trading and protection from MEV",
+    "description": "CoW Swap finds the lowest prices from all daoralized exchanges and DEX aggregators & saves you more with p2p trading and protection from MEV",
     "chainIds": ["42161", "11155111", "1", "100", "8453"],
     "tags": ["Aggregator", "DAO Tooling", "MEV Protection"],
     "features": ["BATCHED_TRANSACTIONS"],

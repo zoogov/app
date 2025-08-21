@@ -2,7 +2,7 @@ import { Avatar, Box, Flex, Icon, Tag, TagLabel, Text } from '@chakra-ui/react';
 import { Dot } from '@phosphor-icons/react';
 import { SEXY_BOX_SHADOW_T_T } from '../../constants/common';
 import { ModalType } from '../ui/modals/ModalProvider';
-import { useDecentModal } from '../ui/modals/useDecentModal';
+import { useDAOModal } from '../ui/modals/useDecentModal';
 import Divider from '../ui/utils/Divider';
 
 type DappCardProps = {
@@ -22,7 +22,7 @@ export default function DappCard({
   categories,
   onClose,
 }: DappCardProps) {
-  const { open: openDappBrowserModal } = useDecentModal(ModalType.DAPP_BROWSER, {
+  const { open: openDappBrowserModal } = useDAOModal(ModalType.DAPP_BROWSER, {
     appUrl,
   });
 

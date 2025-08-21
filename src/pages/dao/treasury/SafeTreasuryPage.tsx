@@ -12,7 +12,7 @@ import {
 import { TitledInfoBox } from '../../../components/ui/containers/TitledInfoBox';
 import { OptionMenu } from '../../../components/ui/menus/OptionMenu';
 import { ModalType } from '../../../components/ui/modals/ModalProvider';
-import { useDecentModal } from '../../../components/ui/modals/useDecentModal';
+import { useDAOModal } from '../../../components/ui/modals/useDecentModal';
 import PageHeader from '../../../components/ui/page/Header/PageHeader';
 import { useCurrentDAOKey } from '../../../hooks/DAO/useCurrentDAOKey';
 import useSendAssetsActionModal from '../../../hooks/DAO/useSendAssetsActionModal';
@@ -42,7 +42,7 @@ export function SafeTreasuryPage() {
   const showLoadMoreTransactions = totalTransfers > shownTransactions && shownTransactions < 100;
   const { openSendAssetsModal } = useSendAssetsActionModal();
   const safeAddress = safe?.address;
-  const { open: openDappBrowserModal } = useDecentModal(ModalType.DAPP_BROWSER, {
+  const { open: openDappBrowserModal } = useDAOModal(ModalType.DAPP_BROWSER, {
     appUrl: 'https://swap.cow.fi',
   });
 

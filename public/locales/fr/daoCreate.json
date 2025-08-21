@@ -56,7 +56,7 @@
   "labelAddAllocation": "Ajouter une allocation",
   "labelAddProposer": "",
   "labelTokenName": "Nom",
-  "helperTokenName": "Saisissez le nom de votre jeton de gouvernance, par exemple Decent.",
+  "helperTokenName": "Saisissez le nom de votre jeton de gouvernance, par exemple DAO.",
   "labelTokenSymbol": "Symbole",
   "helperTokenSymbol": "2-6 caractères, par exemple DCNT, SAFE, USDC.",
   "labelTokenSupply": "Offre totale",

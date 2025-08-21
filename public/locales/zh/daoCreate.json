@@ -56,7 +56,7 @@
   "labelAddAllocation": "增加拨款",
   "labelAddProposer": "",
   "labelTokenName": "名称",
-  "helperTokenName": "输入管理标记的名称，如Decent。",
+  "helperTokenName": "输入管理标记的名称，如DAO。",
   "labelTokenSymbol": "符号",
   "helperTokenSymbol": "2-6个字符，即 DCNT、SAFE、USDC。",
   "labelTokenSupply": "供应总量",

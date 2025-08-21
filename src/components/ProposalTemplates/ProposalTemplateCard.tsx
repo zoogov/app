@@ -14,7 +14,7 @@ import { ProposalTemplate } from '../../types/proposalBuilder';
 import ContentBox from '../ui/containers/ContentBox';
 import { OptionMenu } from '../ui/menus/OptionMenu';
 import { ModalType } from '../ui/modals/ModalProvider';
-import { useDecentModal } from '../ui/modals/useDecentModal';
+import { useDAOModal } from '../ui/modals/useDecentModal';
 import Avatar from '../ui/page/Header/Avatar';
 import Markdown from '../ui/proposal/Markdown';
 
@@ -41,10 +41,10 @@ export default function ProposalTemplateCard({
   const { canUserCreateProposal } = useCanUserCreateProposal();
   const { title, description } = proposalTemplate;
 
-  const { open: openProposalForm } = useDecentModal(ModalType.CREATE_PROPOSAL_FROM_TEMPLATE, {
+  const { open: openProposalForm } = useDAOModal(ModalType.CREATE_PROPOSAL_FROM_TEMPLATE, {
     proposalTemplate,
   });
-  const { open: openForkTemplateForm } = useDecentModal(ModalType.COPY_PROPOSAL_TEMPLATE, {
+  const { open: openForkTemplateForm } = useDAOModal(ModalType.COPY_PROPOSAL_TEMPLATE, {
     proposalTemplate,
     templateIndex,
   });

@@ -1,5 +1,5 @@
 import { Icon, IconButton } from '@chakra-ui/react';
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { GearFine } from '@phosphor-icons/react';
 import { useMemo } from 'react';
 import { getContract } from 'viem';
@@ -15,7 +15,7 @@ import useBlockTimestamp from '../../../../hooks/utils/useBlockTimestamp';
 import { useDAOStore } from '../../../../providers/App/AppProvider';
 import { FractalModuleType, FreezeVotingType } from '../../../../types';
 import { ModalType } from '../../modals/ModalProvider';
-import { useDecentModal } from '../../modals/useDecentModal';
+import { useDAOModal } from '../../modals/useDecentModal';
 import { OptionMenu } from '../OptionMenu';
 
 export function ManageDAOMenu() {
@@ -39,7 +39,7 @@ export function ManageDAOMenu() {
     },
   });
 
-  const { open: openSettingsModal } = useDecentModal(ModalType.SAFE_SETTINGS);
+  const { open: openSettingsModal } = useDAOModal(ModalType.SAFE_SETTINGS);
 
   const { data: walletClient } = useNetworkWalletClient();
 

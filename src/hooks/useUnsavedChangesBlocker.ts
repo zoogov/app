@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useBlocker } from 'react-router-dom';
 import { ModalType } from '../components/ui/modals/ModalProvider';
-import { useDecentModal } from '../components/ui/modals/useDecentModal';
+import { useDAOModal } from '../components/ui/modals/useDecentModal';
 
 interface UseUnsavedBlockerOptions {
   when: boolean;
@@ -14,7 +14,7 @@ export function useUnsavedChangesBlocker({
 }: UseUnsavedBlockerOptions): void {
   const blocker = useBlocker(when);
 
-  const { open: openModal } = useDecentModal(ModalType.WARN_UNSAVED_CHANGES, {
+  const { open: openModal } = useDAOModal(ModalType.WARN_UNSAVED_CHANGES, {
     discardChanges: () => {
       if (blocker.state === 'blocked' && blocker.proceed) {
         blocker.proceed();

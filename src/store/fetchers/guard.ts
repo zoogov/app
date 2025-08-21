@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { useCallback } from 'react';
 import { Address, getContract, GetContractReturnType, PublicClient, zeroAddress } from 'viem';
 import GnosisSafeL2Abi from '../../assets/abi/GnosisSafeL2';
@@ -9,7 +9,7 @@ import {
 import useUserERC721VotingTokens from '../../hooks/DAO/proposal/useUserERC721VotingTokens';
 import useNetworkPublicClient from '../../hooks/useNetworkPublicClient';
 import { useAddressContractType } from '../../hooks/utils/useAddressContractType';
-import { DecentModule, FreezeGuardType, FreezeVotingType } from '../../types';
+import { DAOModule, FreezeGuardType, FreezeVotingType } from '../../types';
 import { blocksToSeconds, getTimeStamp } from '../../utils/contract';
 
 export function useGuardFetcher() {
@@ -23,7 +23,7 @@ export function useGuardFetcher() {
       _azoriusModule,
     }: {
       guardAddress: Address;
-      _azoriusModule?: DecentModule;
+      _azoriusModule?: DAOModule;
     }) => {
       if (_azoriusModule) {
         const azoriusContract = getContract({

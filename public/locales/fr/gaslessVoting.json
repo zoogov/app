@@ -10,7 +10,7 @@
   "refillTank": "Remplir le Paymaster",
   "refillPaymasterAction": "Remplir le Paymaster avec {{amount}} {{symbol}}",
   "starterPromoTitle": "PROMOTION DE DÉPART",
-  "starterPromoDescription": "Rejoignez notre Telegram et contactez notre équipe pour savoir comment faire couvrir vos frais de réseau par Decent :",
+  "starterPromoDescription": "Rejoignez notre Telegram et contactez notre équipe pour savoir comment faire couvrir vos frais de réseau par DAO :",
   "paymasterBalance": "Solde du payeur",
   "paymasterStakedAmount": "Montant mis en jeu par le payeur",
   "submitRefillAmount": "Envoyer",

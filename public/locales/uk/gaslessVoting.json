@@ -10,7 +10,7 @@
   "refillTank": "Поповнити Paymaster",
   "refillPaymasterAction": "Поповнити Paymaster за допомогою {{amount}} {{symbol}}",
   "starterPromoTitle": "СТАРТОВА ПРОМО-АКЦІЯ",
-  "starterPromoDescription": "Приєднуйтесь до нашого Telegram-каналу та зв'яжіться з нашою командою, щоб дізнатися, як отримати відшкодування мережевих зборів від Decent:",
+  "starterPromoDescription": "Приєднуйтесь до нашого Telegram-каналу та зв'яжіться з нашою командою, щоб дізнатися, як отримати відшкодування мережевих зборів від DAO:",
   "paymasterBalance": "Баланс Paymaster",
   "paymasterStakedAmount": "Сума ставки Paymaster",
   "submitRefillAmount": "Надіслати зараз",

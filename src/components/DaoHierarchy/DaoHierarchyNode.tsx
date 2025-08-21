@@ -1,5 +1,5 @@
 import { Center, Flex, Icon, Link, Text } from '@chakra-ui/react';
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import { ArrowElbowDownRight } from '@phosphor-icons/react';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,9 +7,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Address, getContract, zeroAddress } from 'viem';
 import { SENTINEL_ADDRESS } from '../../constants/common';
 import { DAO_ROUTES } from '../../constants/routes';
-import { createDecentSubgraphClient } from '../../graphql';
+import { createDAOSubgraphClient } from '../../graphql';
 import { DAOQuery, DAOQueryResponse } from '../../graphql/DAOQueries';
-import { useDecentModules } from '../../hooks/DAO/loaders/useDecentModules';
+import { useDAOModules } from '../../hooks/DAO/loaders/useDAOModules';
 import { useCurrentDAOKey } from '../../hooks/DAO/useCurrentDAOKey';
 import useNetworkPublicClient from '../../hooks/useNetworkPublicClient';
 import { CacheKeys } from '../../hooks/utils/cache/cacheDefaults';
@@ -18,7 +18,7 @@ import { useAddressContractType } from '../../hooks/utils/useAddressContractType
 import { useDAOStore } from '../../providers/App/AppProvider';
 import { useSafeAPI } from '../../providers/App/hooks/useSafeAPI';
 import { useNetworkConfigStore } from '../../providers/NetworkConfig/useNetworkConfigStore';
-import { DaoHierarchyInfo, DaoHierarchyStrategyType, DecentModule } from '../../types';
+import { DaoHierarchyInfo, DaoHierarchyStrategyType, DAOModule } from '../../types';
 import { getAzoriusModuleFromModules } from '../../utils';
 import { DAONodeInfoCard, NODE_HEIGHT_REM } from '../ui/cards/DAONodeInfoCard';
 import { BarLoader } from '../ui/loaders/BarLoader';
@@ -52,10 +52,10 @@ export function DaoHierarchyNode({
   const publicClient = useNetworkPublicClient();
 
   const { getAddressContractType } = useAddressContractType();
-  const lookupModules = useDecentModules();
+  const lookupModules = useDAOModules();
 
   const getVotingStrategies = useCallback(
-    async (azoriusModule: DecentModule) => {
+    async (azoriusModule: DAOModule) => {
       const azoriusContract = getContract({
         abi: legacy.abis.Azorius,
         address: azoriusModule.moduleAddress,
@@ -84,7 +84,7 @@ export function DaoHierarchyNode({
   );
 
   const getGovernanceTypes = useCallback(
-    async (azoriusModule: DecentModule) => {
+    async (azoriusModule: DAOModule) => {
       const votingStrategies = await getVotingStrategies(azoriusModule);
 
       if (!votingStrategies) {
@@ -125,7 +125,7 @@ export function DaoHierarchyNode({
       try {
         const safe = await safeApi.getSafeInfo(_safeAddress);
 
-        const client = createDecentSubgraphClient(getConfigByChainId(chain.id));
+        const client = createDAOSubgraphClient(getConfigByChainId(chain.id));
         const queryResult = await client.query<DAOQueryResponse>(DAOQuery, {
           safeAddress: _safeAddress,
         });
@@ -177,7 +177,7 @@ export function DaoHierarchyNode({
       setHierarchyNode(cachedNode);
 
       // Always query subgraph for latest hierarchy data
-      const client = createDecentSubgraphClient(getConfigByChainId(chain.id));
+      const client = createDAOSubgraphClient(getConfigByChainId(chain.id));
       client.query<DAOQueryResponse>(DAOQuery, { safeAddress }).then(queryResult => {
         if (queryResult.error) return;
 

@@ -8,7 +8,7 @@ import useFeatureFlag from '../../../../helpers/environmentFeatureFlags';
 import { useNetworkConfigStore } from '../../../../providers/NetworkConfig/useNetworkConfigStore';
 import { useProposalActionsStore } from '../../../../store/actions/useProposalActionsStore';
 import { ModalType } from '../../modals/ModalProvider';
-import { useDecentModal } from '../../modals/useDecentModal';
+import { useDAOModal } from '../../modals/useDecentModal';
 import { OptionMenu } from '../OptionMenu';
 import { IOption } from '../OptionMenu/types';
 
@@ -17,7 +17,7 @@ export function CreateProposalMenu({ safeAddress }: { safeAddress: Address }) {
 
   const { addressPrefix } = useNetworkConfigStore();
   const { resetActions } = useProposalActionsStore();
-  const { open: openDappsBrowserModal } = useDecentModal(ModalType.DAPPS_BROWSER);
+  const { open: openDappsBrowserModal } = useDAOModal(ModalType.DAPPS_BROWSER);
 
   const navigate = useNavigate();
   const iframeFeatureEnabled = useFeatureFlag('flag_iframe_template');

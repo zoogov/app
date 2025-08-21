@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import {
   AbiItem,
   Address,
@@ -47,7 +47,7 @@ export const getPaymasterAddress = (args: {
   );
 
   const encodedPaymasterInitializationData = encodeFunctionData({
-    abi: legacy.abis.DecentPaymasterV1,
+    abi: legacy.abis.DAOPaymasterV1,
     functionName: 'initialize',
     args: [encodedPaymasterInitializationParams],
   });

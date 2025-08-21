@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { ModalType } from '../../components/ui/modals/ModalProvider';
-import { useDecentModal } from '../../components/ui/modals/useDecentModal';
+import { useDAOModal } from '../../components/ui/modals/useDecentModal';
 import { DAO_ROUTES } from '../../constants/routes';
 import { useDAOStore } from '../../providers/App/AppProvider';
 import { useNetworkConfigStore } from '../../providers/NetworkConfig/useNetworkConfigStore';
@@ -33,7 +33,7 @@ export default function useSendAssetsActionModal() {
     navigate(DAO_ROUTES.proposalWithActionsNew.relative(addressPrefix, safe.address));
   };
 
-  const { open: openSendAssetsModal } = useDecentModal(ModalType.SEND_ASSETS, {
+  const { open: openSendAssetsModal } = useDAOModal(ModalType.SEND_ASSETS, {
     onSubmit: sendAssetsAction,
     submitButtonText: t('submitProposal', { ns: 'modals' }),
   });

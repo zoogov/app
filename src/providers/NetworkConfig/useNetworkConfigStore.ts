@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { NetworkConfig } from '../../types/network';
 import { networks } from './networks';
-import { mainnetConfig } from './networks/mainnet';
+import { localhostConfig } from './networks/localhost';
 
 type NetworkConfigStore = NetworkConfig & {
   getConfigByChainId: (chainId?: number) => NetworkConfig;
@@ -26,9 +26,9 @@ export const getNetworkConfig = (chainId?: number): NetworkConfig => {
   }
 };
 
-// Create the Zustand store
+// Create the Zustand store - default to localhost for development
 export const useNetworkConfigStore = create<NetworkConfigStore>(set => ({
-  ...mainnetConfig,
+  ...localhostConfig,
   getConfigByChainId: getNetworkConfig,
   setCurrentConfig: (config: NetworkConfig) => set({ ...config }),
 }));

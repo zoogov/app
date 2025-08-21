@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import {
   Address,
   encodeAbiParameters,
@@ -14,7 +14,7 @@ import { buildContractCall } from '../../helpers/crypto';
 import { SafeTransaction } from '../../types';
 import { generateContractByteCodeLinear, generateSalt } from './utils';
 
-export interface DecentModule {
+export interface DAOModule {
   predictedFractalModuleAddress: string;
   deployFractalModuleTx: SafeTransaction;
   enableFractalModuleTx: SafeTransaction;
@@ -26,7 +26,7 @@ export const fractalModuleData = (
   safeAddress: Address,
   saltNum: bigint,
   parentAddress?: Address | null,
-): DecentModule => {
+): DAOModule => {
   const fractalModuleCalldata = encodeFunctionData({
     abi: legacy.abis.FractalModule,
     functionName: 'setUp',

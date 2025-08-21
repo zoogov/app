@@ -4,7 +4,7 @@ import { StateCreator } from 'zustand';
 import {
   AzoriusProposal,
   DAOKey,
-  DecentGovernance,
+  DAOGovernance,
   ERC20LockedTokenData,
   ERC721ProposalVote,
   ERC721TokenData,
@@ -328,16 +328,16 @@ export const createGovernancesSlice: StateCreator<
   setGovernanceLockReleaseAccountData: (daoKey, lockReleaseAccountData) => {
     set(
       state => {
-        const decentGovernance = state.governances[daoKey] as DecentGovernance;
+        const daoGovernance = state.governances[daoKey] as DAOGovernance;
         if (
           !state.governances[daoKey] ||
           !state.governances[daoKey].isAzorius ||
-          !decentGovernance.lockedVotesToken
+          !daoGovernance.lockedVotesToken
         ) {
           return;
         }
-        decentGovernance.lockedVotesToken.balance = lockReleaseAccountData.balance;
-        decentGovernance.lockedVotesToken.delegatee = lockReleaseAccountData.delegatee;
+        daoGovernance.lockedVotesToken.balance = lockReleaseAccountData.balance;
+        daoGovernance.lockedVotesToken.delegatee = lockReleaseAccountData.delegatee;
       },
       false,
       'setGovernanceLockReleaseAccountData',

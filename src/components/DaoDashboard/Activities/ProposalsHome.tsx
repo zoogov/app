@@ -12,7 +12,7 @@ import { useDAOStore } from '../../../providers/App/AppProvider';
 import { useNetworkConfigStore } from '../../../providers/NetworkConfig/useNetworkConfigStore';
 import {
   AzoriusGovernance,
-  DecentGovernance,
+  DAOGovernance,
   FractalProposalState,
   GovernanceType,
   MultisigProposal,
@@ -23,7 +23,7 @@ import { CreateProposalMenu } from '../../ui/menus/CreateProposalMenu';
 import { OptionMenu } from '../../ui/menus/OptionMenu';
 import { OptionsList } from '../../ui/menus/OptionMenu/OptionsList';
 import { ModalType } from '../../ui/modals/ModalProvider';
-import { useDecentModal } from '../../ui/modals/useDecentModal';
+import { useDAOModal } from '../../ui/modals/useDecentModal';
 import { PaginationControls } from '../../ui/utils/PaginationControls';
 import { Sort } from '../../ui/utils/Sort';
 import { ActivityFreeze } from './ActivityFreeze';
@@ -82,13 +82,13 @@ export function ProposalsHome() {
 
   const { addressPrefix } = useNetworkConfigStore();
   const azoriusGovernance = governance as AzoriusGovernance;
-  const { open: delegate } = useDecentModal(ModalType.DELEGATE);
+  const { open: delegate } = useDAOModal(ModalType.DELEGATE);
 
   const canDelegate = useMemo(() => {
     if (azoriusGovernance.type === GovernanceType.AZORIUS_ERC20) {
-      const decentGovernance = azoriusGovernance as DecentGovernance;
+      const daoGovernance = azoriusGovernance as DAOGovernance;
 
-      const lockedTokenBalance = decentGovernance?.lockedVotesToken?.balance;
+      const lockedTokenBalance = daoGovernance?.lockedVotesToken?.balance;
       const hasLockedTokenBalance = lockedTokenBalance ? lockedTokenBalance > 0n : undefined;
 
       const votesTokenBalance = azoriusGovernance?.votesToken?.balance;

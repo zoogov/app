@@ -1,11 +1,11 @@
-# Decent Interface
+# DAO Interface
 
 ## Local Development
 
 Clone the repository
 
 ```shell
-$ git clone git@github.com:decentdao/decent-interface.git
+$ git clone git@github.com:luxdao/interface.git
 ```
 
 Change to application's `Node.js` version
@@ -75,7 +75,7 @@ This script is also used by Git Action as a precheck at merge.
 
 ### Setup
 
-Start with adding a new Feature Flag to the app. In https://github.com/decentdao/decent-interface/src/helpers/featureFlags.ts, Add a flag.
+Start with adding a new Feature Flag to the app. In https://github.com/luxdao/interface/src/helpers/featureFlags.ts, Add a flag.
 
 ```typescript
 export const FEATURE_FLAGS = ['flag_dev', 'flag_feature_a'] as const;
@@ -83,11 +83,11 @@ export const FEATURE_FLAGS = ['flag_dev', 'flag_feature_a'] as const;
 
 ### Remote Configuration
 
-Two Firebase projects were set up. "DecentDAO" for production, and "DecentDAO Develop" for development.
+Two Firebase projects were set up. "DAODAO" for production, and "DAODAO Develop" for development.
 
-During develop, set the feature flag to "on" on "DecentDAO Develop".
+During develop, set the feature flag to "on" on "DAODAO Develop".
 
-After the feature is completed, tested, and ready to release, set the flag to "on" on "DecentDAO".
+After the feature is completed, tested, and ready to release, set the flag to "on" on "DAODAO".
 
 ### Usage
 
@@ -118,7 +118,7 @@ http://localhost:3000/?flag_feature_a=on
 Override the flag value by adding query params to the URL. Notice how the `VITE_APP_` prefix is omitted and the flag name is in lowercase:
 
 ```
-https://app.decentdao.org?flag_feature_a=on
+https://app.luxdao.org?flag_feature_a=on
 ```
 
 From then, the flag holds the value from the URL param until app is refreshed
@@ -134,7 +134,7 @@ Once code under the feature flag has been proven reliable, remove the feature fl
 ## Subgraph
 
 We're using `Subgraph` to index certain "metadata" events to simplify data fetching from application site.
-Repository, that implements mapping located [here](https://github.com/decentdao/decent-subgraph).
+Repository, that implements mapping located [here](https://github.com/luxdao/subgraph).
 
 If you updated mapping and deployed new version - you might need to rebuild `Subgraph` artifacts. Use command below.
 
@@ -148,5 +148,5 @@ $ npm run graphql:build
 
 This app is deployed on Cloudflare Pages with the following configuration:
 
-- Production deployment (tracking `main` branch): https://app.new.decentdao.org
-- All other branches get preview deployments at: https://branch-name.decent-interface.pages.dev
+- Production deployment (tracking `main` branch): https://app.new.luxdao.org
+- All other branches get preview deployments at: https://branch-name.interface.pages.dev

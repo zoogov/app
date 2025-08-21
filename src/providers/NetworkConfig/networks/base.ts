@@ -1,4 +1,4 @@
-import { legacy, addresses } from '@decentdao/decent-contracts';
+import { legacy, addresses } from '@luxdao/contracts';
 import {
   getCompatibilityFallbackHandlerDeployment,
   getMultiSendCallOnlyDeployment,
@@ -30,7 +30,7 @@ export const baseConfig: NetworkConfig = {
   addressPrefix: 'base',
   nativeTokenIcon: '/images/coin-icon-base.svg',
   isENSSupported: false,
-  decentSubgraph: {
+  daoSubgraph: {
     space: 71032,
     slug: 'fractal-base',
     id: 'BWv5n6PPqv99y6vAez5M9jNvmKagpSpKprYPoKMb8z4o',
@@ -94,12 +94,12 @@ export const baseConfig: NetworkConfig = {
 
     claimErc20MasterCopy: getAddressFromContractDeploymentInfo(a.ERC20Claim),
 
-    decentAutonomousAdminV1MasterCopy: getAddressFromContractDeploymentInfo(
-      a.DecentAutonomousAdminV1,
+    daoAutonomousAdminV1MasterCopy: getAddressFromContractDeploymentInfo(
+      a.DAOAutonomousAdminV1,
     ),
 
     paymaster: {
-      decentPaymasterV1MasterCopy: getAddressFromContractDeploymentInfo(a.DecentPaymasterV1),
+      daoPaymasterV1MasterCopy: getAddressFromContractDeploymentInfo(a.DAOPaymasterV1),
       linearERC20VotingV1ValidatorV1: getAddressFromContractDeploymentInfo(
         a.LinearERC20VotingV1ValidatorV1,
       ),
@@ -110,12 +110,12 @@ export const baseConfig: NetworkConfig = {
 
     keyValuePairs: getAddressFromContractDeploymentInfo(a.KeyValuePairs),
 
-    decentHatsCreationModule: getAddressFromContractDeploymentInfo(a.DecentHatsCreationModule),
-    decentHatsModificationModule: getAddressFromContractDeploymentInfo(
-      a.DecentHatsModificationModule,
+    daoHatsCreationModule: getAddressFromContractDeploymentInfo(a.DAOHatsCreationModule),
+    daoHatsModificationModule: getAddressFromContractDeploymentInfo(
+      a.DAOHatsModificationModule,
     ),
-    decentSablierStreamManagementModule: getAddressFromContractDeploymentInfo(
-      a.DecentSablierStreamManagementModule,
+    daoSablierStreamManagementModule: getAddressFromContractDeploymentInfo(
+      a.DAOSablierStreamManagementModule,
     ),
 
     hatsProtocol: '0x3bc1A0Ad72417f2d411118085256fC53CBdDd137',

@@ -1,4 +1,4 @@
-import { legacy, abis } from '@decentdao/decent-contracts';
+import { legacy, abis } from '@luxdao/contracts';
 import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -35,7 +35,7 @@ import { useNetworkConfigStore } from '../../providers/NetworkConfig/useNetworkC
 import {
   AzoriusProposal,
   CreateProposalMetadata,
-  DecentModule,
+  DAOModule,
   ERC20LockedTokenData,
   ERC721TokenData,
   FractalProposal,
@@ -85,7 +85,7 @@ export function useGovernanceFetcher() {
     contracts: {
       zodiacModuleProxyFactory,
       accountAbstraction,
-      paymaster: { decentPaymasterV1MasterCopy },
+      paymaster: { daoPaymasterV1MasterCopy },
       votesERC20StakedV1MasterCopy,
     },
   } = useNetworkConfigStore();
@@ -105,7 +105,7 @@ export function useGovernanceFetcher() {
       onVotesTokenAddressLoaded,
     }: {
       daoAddress: Address;
-      daoModules: DecentModule[];
+      daoModules: DAOModule[];
       onMultisigGovernanceLoaded: () => void;
       onAzoriusGovernanceLoaded: (governance: SetAzoriusGovernancePayload) => void;
       onProposalsLoaded: (proposals: FractalProposal[]) => void;
@@ -887,7 +887,7 @@ export function useGovernanceFetcher() {
         const paymasterAddress = getPaymasterAddress({
           safeAddress,
           zodiacModuleProxyFactory,
-          paymasterMastercopy: decentPaymasterV1MasterCopy,
+          paymasterMastercopy: daoPaymasterV1MasterCopy,
           entryPoint: accountAbstraction.entryPointv07,
           lightAccountFactory: accountAbstraction.lightAccountFactory,
           chainId: publicClient.chain.id,
@@ -917,7 +917,7 @@ export function useGovernanceFetcher() {
         return;
       }
     },
-    [publicClient, accountAbstraction, zodiacModuleProxyFactory, decentPaymasterV1MasterCopy],
+    [publicClient, accountAbstraction, zodiacModuleProxyFactory, daoPaymasterV1MasterCopy],
   );
 
   const fetchMultisigERC20Token = useCallback(

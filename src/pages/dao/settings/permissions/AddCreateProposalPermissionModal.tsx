@@ -8,7 +8,7 @@ import { SettingsPermissionsStrategyForm } from '../../../../components/SafeSett
 import { Card } from '../../../../components/ui/cards/Card';
 import { ModalType } from '../../../../components/ui/modals/ModalProvider';
 import { SafeSettingsEdits } from '../../../../components/ui/modals/SafeSettingsModal';
-import { useDecentModal } from '../../../../components/ui/modals/useDecentModal';
+import { useDAOModal } from '../../../../components/ui/modals/useDecentModal';
 import NestedPageHeader from '../../../../components/ui/page/Header/NestedPageHeader';
 import Divider from '../../../../components/ui/utils/Divider';
 import { DAO_ROUTES } from '../../../../constants/routes';
@@ -18,7 +18,7 @@ import { useNetworkConfigStore } from '../../../../providers/NetworkConfig/useNe
 import { AzoriusGovernance, BigIntValuePair } from '../../../../types';
 
 // @todo Near-duplicate of SafePermissionsCreateProposal.tsx. Pending refactor and/or cleanup.
-// https://linear.app/decent-labs/issue/ENG-842/fix-permissions-settings-ux-flows
+// https://linear.app/hanzoai/issue/ENG-842/fix-permissions-settings-ux-flows
 export function AddCreateProposalPermissionModal({
   closeModal,
   votingStrategyAddress,
@@ -36,7 +36,7 @@ export function AddCreateProposalPermissionModal({
   } = useDAOStore({ daoKey });
   const azoriusGovernance = governance as AzoriusGovernance;
 
-  const { open: openConfirmDeleteStrategyModal } = useDecentModal(
+  const { open: openConfirmDeleteStrategyModal } = useDAOModal(
     ModalType.CONFIRM_DELETE_STRATEGY,
   );
 

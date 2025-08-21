@@ -1,4 +1,4 @@
-import { legacy } from '@decentdao/decent-contracts';
+import { legacy } from '@luxdao/contracts';
 import groupBy from 'lodash.groupby';
 import { useCallback } from 'react';
 import { Address, Hex, encodeFunctionData, erc20Abi, getAddress, zeroAddress } from 'viem';
@@ -19,7 +19,7 @@ export function convertStreamIdToBigInt(streamId: string) {
 
 export default function useCreateSablierStream() {
   const {
-    contracts: { sablierV2LockupLinear, sablierV2Batch, decentSablierStreamManagementModule },
+    contracts: { sablierV2LockupLinear, sablierV2Batch, daoSablierStreamManagementModule },
   } = useNetworkConfigStore();
   const { daoKey } = useCurrentDAOKey();
   const {
@@ -100,17 +100,17 @@ export default function useCreateSablierStream() {
       const enableModuleData = encodeFunctionData({
         abi: GnosisSafeL2,
         functionName: 'enableModule',
-        args: [decentSablierStreamManagementModule],
+        args: [daoSablierStreamManagementModule],
       });
 
       const disableModuleData = encodeFunctionData({
         abi: GnosisSafeL2,
         functionName: 'disableModule',
-        args: [SENTINEL_MODULE, decentSablierStreamManagementModule],
+        args: [SENTINEL_MODULE, daoSablierStreamManagementModule],
       });
 
       const withdrawMaxFromStreamData = encodeFunctionData({
-        abi: legacy.abis.DecentSablierStreamManagementModule,
+        abi: legacy.abis.DAOSablierStreamManagementModule,
         functionName: 'withdrawMaxFromStream',
         args: [sablierV2LockupLinear, smartAccount, convertStreamIdToBigInt(streamId), to],
       });
@@ -121,7 +121,7 @@ export default function useCreateSablierStream() {
           calldata: enableModuleData,
         },
         {
-          targetAddress: decentSablierStreamManagementModule,
+          targetAddress: daoSablierStreamManagementModule,
           calldata: withdrawMaxFromStreamData,
         },
         {
@@ -130,7 +130,7 @@ export default function useCreateSablierStream() {
         },
       ];
     },
-    [safeAddress, decentSablierStreamManagementModule, sablierV2LockupLinear],
+    [safeAddress, daoSablierStreamManagementModule, sablierV2LockupLinear],
   );
 
   const prepareCancelStreamTxs = useCallback(
@@ -142,17 +142,17 @@ export default function useCreateSablierStream() {
       const enableModuleData = encodeFunctionData({
         abi: GnosisSafeL2,
         functionName: 'enableModule',
-        args: [decentSablierStreamManagementModule],
+        args: [daoSablierStreamManagementModule],
       });
 
       const disableModuleData = encodeFunctionData({
         abi: GnosisSafeL2,
         functionName: 'disableModule',
-        args: [SENTINEL_MODULE, decentSablierStreamManagementModule],
+        args: [SENTINEL_MODULE, daoSablierStreamManagementModule],
       });
 
       const cancelStreamData = encodeFunctionData({
-        abi: legacy.abis.DecentSablierStreamManagementModule,
+        abi: legacy.abis.DAOSablierStreamManagementModule,
         functionName: 'cancelStream',
         args: [sablierV2LockupLinear, convertStreamIdToBigInt(streamId)],
       });
@@ -163,7 +163,7 @@ export default function useCreateSablierStream() {
           calldata: enableModuleData,
         },
         {
-          targetAddress: decentSablierStreamManagementModule,
+          targetAddress: daoSablierStreamManagementModule,
           calldata: cancelStreamData,
         },
         {
@@ -172,7 +172,7 @@ export default function useCreateSablierStream() {
         },
       ];
     },
-    [safeAddress, decentSablierStreamManagementModule, sablierV2LockupLinear],
+    [safeAddress, daoSablierStreamManagementModule, sablierV2LockupLinear],
   );
 
   const prepareBatchLinearStreamCreation = useCallback(

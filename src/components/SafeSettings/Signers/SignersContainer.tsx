@@ -10,7 +10,7 @@ import { useDAOStore } from '../../../providers/App/AppProvider';
 import { NumberStepperInput } from '../../ui/forms/NumberStepperInput';
 import { ModalType } from '../../ui/modals/ModalProvider';
 import { SafeSettingsEdits, SafeSettingsFormikErrors } from '../../ui/modals/SafeSettingsModal';
-import { useDecentModal } from '../../ui/modals/useDecentModal';
+import { useDAOModal } from '../../ui/modals/useDecentModal';
 import Divider from '../../ui/utils/Divider';
 
 type SignerItem = {
@@ -189,7 +189,7 @@ export function SignersContainer() {
     );
   }, [account, signers]);
 
-  const { open: handleModifyGovernance } = useDecentModal(ModalType.CONFIRM_MODIFY_GOVERNANCE);
+  const { open: handleModifyGovernance } = useDAOModal(ModalType.CONFIRM_MODIFY_GOVERNANCE);
 
   // Calculate if we can remove more signers
   const canRemoveMoreSigners = useMemo(() => {

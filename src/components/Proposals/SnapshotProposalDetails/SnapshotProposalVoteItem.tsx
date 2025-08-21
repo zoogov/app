@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAccount } from 'wagmi';
 import { useGetAccountName } from '../../../hooks/utils/useGetAccountName';
 import {
-  DecentSnapshotVote,
+  DAOSnapshotVote,
   ExtendedSnapshotProposal,
   SnapshotWeightedVotingChoice,
 } from '../../../types';
@@ -12,7 +12,7 @@ import StatusBox from '../../ui/badges/StatusBox';
 
 interface ISnapshotProposalVoteItem {
   proposal: ExtendedSnapshotProposal;
-  vote: DecentSnapshotVote;
+  vote: DAOSnapshotVote;
 }
 
 export default function SnapshotProposalVoteItem({ proposal, vote }: ISnapshotProposalVoteItem) {

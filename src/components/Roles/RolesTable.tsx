@@ -7,7 +7,7 @@ import { useNetworkEnsAvatar } from '../../hooks/useNetworkEnsAvatar';
 import { useGetAccountName } from '../../hooks/utils/useGetAccountName';
 import { useRolesStore } from '../../store/roles/useRolesStore';
 import {
-  DecentTree,
+  DAOTree,
   EditBadgeStatus,
   RoleEditProps,
   RoleFormValues,
@@ -254,7 +254,7 @@ export function RolesTable({
   hatsTree,
 }: {
   handleRoleClick: (hatId: Address) => void;
-  hatsTree: DecentTree;
+  hatsTree: DAOTree;
 }) {
   return (
     <Box

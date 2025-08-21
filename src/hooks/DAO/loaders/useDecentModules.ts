@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { getAddress } from 'viem';
-import { DecentModule, FractalModuleType } from '../../../types';
+import { DAOModule, FractalModuleType } from '../../../types';
 import { useAddressContractType } from '../../utils/useAddressContractType';
 
-export const useDecentModules = () => {
+export const useDAOModules = () => {
   const { getAddressContractType } = useAddressContractType();
   const lookupModules = useCallback(
     async (_moduleAddresses: string[]) => {
@@ -13,7 +13,7 @@ export const useDecentModules = () => {
 
           const masterCopyData = await getAddressContractType(moduleAddress);
 
-          let safeModule: DecentModule;
+          let safeModule: DAOModule;
 
           if (masterCopyData.isModuleAzorius) {
             safeModule = {

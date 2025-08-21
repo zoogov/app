@@ -56,7 +56,7 @@
   "labelAddAllocation": "Додати розподіл",
   "labelAddProposer": "",
   "labelTokenName": "Ім'я",
-  "helperTokenName": "Введіть назву вашого токену управління, наприклад, Decent.",
+  "helperTokenName": "Введіть назву вашого токену управління, наприклад, DAO.",
   "labelTokenSymbol": "Символ",
   "helperTokenSymbol": "2-6 символів, тобто DCNT, SAFE, USDC.",
   "labelTokenSupply": "Загальна пропозиція",

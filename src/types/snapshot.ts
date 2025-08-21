@@ -23,7 +23,7 @@ export interface SnapshotPlugin {}
 export interface SnapshotWeightedVotingChoice {
   [choice: number]: number;
 }
-export interface DecentSnapshotVote {
+export interface DAOSnapshotVote {
   id: string;
   voter: Address;
   votingWeight: number;
@@ -39,7 +39,7 @@ export interface SnapshotVoteBreakdown {
   // However, it's not a big deal cause we don't need to rely on that
   [voteChoice: string]: {
     total: number;
-    votes: DecentSnapshotVote[];
+    votes: DAOSnapshotVote[];
   };
 }
 
@@ -64,7 +64,7 @@ export interface ExtendedSnapshotProposal extends SnapshotProposal {
   strategies: SnapshotVotingStrategy[];
   choices: string[];
   plugins: SnapshotPlugin[];
-  votes: DecentSnapshotVote[];
+  votes: DAOSnapshotVote[];
   votesBreakdown: SnapshotVoteBreakdown;
 }
 
